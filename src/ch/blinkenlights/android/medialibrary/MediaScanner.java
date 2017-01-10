@@ -12,7 +12,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>. 
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
 package ch.blinkenlights.android.medialibrary;
@@ -69,10 +69,6 @@ public class MediaScanner implements Handler.Callback {
 	private int mLastNotification;
 
 	/**
-	 * If true skip files less than a specified size.
-	 */
-	private boolean mIgnoreSmallFiles = false;
-	/**
 	 * The id we are using for the scan notification
 	 */
 	private static final int NOTIFICATION_ID = 56162;
@@ -84,6 +80,11 @@ public class MediaScanner implements Handler.Callback {
 	 * The preference key to store the native audio size
 	 */
 	private static final String PREF_KEY_DBCOUNT = "native_audio_db_count";
+
+	/**
+	 * If true skip files less than a specified size.
+	 */
+	private boolean mIgnoreSmallFiles = false;
 
 	MediaScanner(Context context, MediaLibraryBackend backend) {
 		mContext = context;
@@ -688,4 +689,3 @@ public class MediaScanner implements Handler.Callback {
 		}
 	}
 }
-
