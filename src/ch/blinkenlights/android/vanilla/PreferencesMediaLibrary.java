@@ -42,6 +42,10 @@ public class PreferencesMediaLibrary extends Fragment
 	 */
 	private View mStartButton;
 	/**
+	 * The cancel button
+	 */
+	private View mCancelButton;
+	/**
 	 * The debug / progress text describing the scan status
 	 */
 	private TextView mProgress;
@@ -76,6 +80,7 @@ public class PreferencesMediaLibrary extends Fragment
 		super.onViewCreated(view, savedInstanceState);
 
 		mStartButton = (View)view.findViewById(R.id.start_button);
+		mCancelButton = (View)view.findViewById(R.id.cancel_button);
 		mProgress = (TextView)view.findViewById(R.id.media_stats_progress);
 		mStatsTracks = (TextView)view.findViewById(R.id.media_stats_tracks);
 		mStatsPlaytime = (TextView)view.findViewById(R.id.media_stats_playtime);
@@ -87,6 +92,13 @@ public class PreferencesMediaLibrary extends Fragment
 			@Override
 			public void onClick(View v) {
 				startButtonPressed(v);
+			}
+		});
+
+		mCancelButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				cancelButtonPressed(v);
 			}
 		});
 	}
@@ -125,6 +137,7 @@ public class PreferencesMediaLibrary extends Fragment
 		String scanText = MediaLibrary.describeScanProgress(getActivity());
 		mProgress.setText(scanText);
 		mStartButton.setEnabled(scanText == null);
+		mCancelButton.setVisibility(scanText == null ? View.GONE : View.VISIBLE);
 
 		Integer songCount = MediaLibrary.getLibrarySize(context);
 		mStatsTracks.setText(songCount.toString());
@@ -157,7 +170,17 @@ public class PreferencesMediaLibrary extends Fragment
 	 * @param view the view which was pressed
 	 */
 	public void startButtonPressed(View view) {
-		MediaLibrary.scanLibrary(getActivity(), mFullScanCheck.isChecked(), mDropDbCheck.isChecked(), mIgnoreSmallFiles.isChecked());
+		MediaLibrary.startLibraryScan(getActivity(), mFullScanCheck.isChecked(), mDropDbCheck.isChecked(), mIgnoreSmallFiles.isChecked());
+		updateProgress();
+	}
+
+	/**
+	 * Called when the user hits the cancel button
+	 *
+	 * @param view the view which was pressed
+	 */
+	public void cancelButtonPressed(View view) {
+		MediaLibrary.abortLibraryScan(getActivity());
 		updateProgress();
 	}
 

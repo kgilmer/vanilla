@@ -83,7 +83,7 @@ public class MediaLibrary  {
      * @param drop drop the existing library if true
      * @param ignoreSmallFiles ignore files less than a specific size.
      */
-	public static void scanLibrary(Context context, boolean forceFull, boolean drop, boolean ignoreSmallFiles) {
+	public static void startLibraryScan(Context context, boolean forceFull, boolean drop, boolean ignoreSmallFiles) {
 		MediaLibraryBackend backend = getBackend(context); // also initialized sScanner
 
 		sScanner.setIgnoreSmallFiles(ignoreSmallFiles);
@@ -97,6 +97,16 @@ public class MediaLibrary  {
 		} else {
 			sScanner.startNormalScan();
 		}
+	}
+
+	/**
+	 * Stops any running scan
+	 *
+	 * @param context the context to use
+	 */
+	public static void abortLibraryScan(Context context) {
+		MediaLibraryBackend backend = getBackend(context); // also initialized sScanner
+		sScanner.abortScan();
 	}
 
 	/**
