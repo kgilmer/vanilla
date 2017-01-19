@@ -32,6 +32,8 @@ import android.graphics.Bitmap;
 import android.view.View;
 import android.widget.RemoteViews;
 
+import com.abk.banira.R;
+
 /**
  * 2x2 widget that shows title, artist, a (hidden) play/pause button, a (hidden)
  * next button, and cover art in the background.

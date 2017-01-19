@@ -33,6 +33,8 @@ import android.widget.CheckBox;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.abk.banira.R;
+
 /**
  * SeekBar preference to set the shake force threshold.
  */

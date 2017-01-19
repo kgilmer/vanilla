@@ -32,6 +32,8 @@ import android.graphics.Bitmap;
 import android.view.View;
 import android.widget.RemoteViews;
 
+import com.abk.banira.R;
+
 /**
  * 1x4 widget that shows title, artist, album art, a play/pause button, and a
  * next button.

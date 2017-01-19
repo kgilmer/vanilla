@@ -28,6 +28,8 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;
 
+import com.abk.banira.R;
+
 /**
  * Compact playback activity that displays itself like a dialog. That is, the
  * window is not fullscreen but only as large as it needs to be. Includes a

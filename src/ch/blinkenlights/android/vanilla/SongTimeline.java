@@ -29,6 +29,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.MediaStore;
+
+import com.abk.banira.R;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;

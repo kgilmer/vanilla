@@ -26,6 +26,8 @@ import android.widget.ImageButton;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
 
+import com.abk.banira.R;
+
 public class VanillaImageButton extends ImageButton {
 
 	private Context mContext;

@@ -50,6 +50,8 @@ import android.widget.Toast;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 
+import com.abk.banira.R;
+
 /**
  * The primary playback screen with playback controls and large cover display.
  */

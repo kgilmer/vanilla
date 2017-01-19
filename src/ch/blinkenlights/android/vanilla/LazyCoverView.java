@@ -31,6 +31,8 @@ import android.util.AttributeSet;
 import android.util.LruCache;
 import android.widget.ImageView;
 
+import com.abk.banira.R;
+
 /**
  * LazyCoverView implements a 'song-aware' ImageView
  *

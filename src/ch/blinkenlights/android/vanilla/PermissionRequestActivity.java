@@ -30,6 +30,8 @@ import android.view.LayoutInflater;
 import android.os.Build;
 import android.os.Bundle;
 
+import com.abk.banira.R;
+
 
 public class PermissionRequestActivity extends Activity {
 

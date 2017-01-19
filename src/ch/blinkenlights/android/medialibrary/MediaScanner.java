@@ -17,7 +17,7 @@
 
 package ch.blinkenlights.android.medialibrary;
 
-import ch.blinkenlights.android.vanilla.R;
+import com.abk.banira.R;
 
 import android.app.Notification;
 import android.app.NotificationManager;

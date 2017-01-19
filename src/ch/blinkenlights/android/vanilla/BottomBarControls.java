@@ -42,6 +42,8 @@ import android.widget.PopupMenu;
 import android.widget.SearchView;
 import android.widget.TextView;
 
+import com.abk.banira.R;
+
 
 public class BottomBarControls extends LinearLayout
 	implements View.OnClickListener

@@ -48,6 +48,8 @@ import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.abk.banira.R;
+
 /**
  * Base activity for activities that contain playback controls. Handles
  * communication with the PlaybackService and response to state and song

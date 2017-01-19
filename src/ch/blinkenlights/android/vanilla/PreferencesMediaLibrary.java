@@ -31,6 +31,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 import android.util.Log;
 
+import com.abk.banira.R;
+
 public class PreferencesMediaLibrary extends Fragment
 {
 	/**

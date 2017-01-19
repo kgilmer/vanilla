@@ -30,6 +30,8 @@ import android.preference.PreferenceFragment;
 import android.preference.PreferenceScreen;
 import android.util.Log;
 
+import com.abk.banira.R;
+
 
 public class PreferencesTheme extends PreferenceFragment
  implements Preference.OnPreferenceClickListener

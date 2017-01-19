@@ -31,6 +31,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 
+import com.abk.banira.R;
+
 public class PlaylistDialog extends DialogFragment
 	implements DialogInterface.OnClickListener
 {

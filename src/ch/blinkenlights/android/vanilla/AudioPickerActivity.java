@@ -28,6 +28,8 @@ import android.view.Window;
 import android.widget.TextView;
 import android.widget.Button;
 
+import com.abk.banira.R;
+
 import java.io.File;
 
 

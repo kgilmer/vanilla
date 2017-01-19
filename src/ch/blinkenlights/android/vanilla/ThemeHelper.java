@@ -22,6 +22,8 @@ import android.content.res.TypedArray;
 import android.content.SharedPreferences;
 import android.os.Build;
 
+import com.abk.banira.R;
+
 public class ThemeHelper {
 
 	/**

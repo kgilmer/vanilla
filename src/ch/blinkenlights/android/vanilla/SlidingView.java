@@ -31,6 +31,8 @@ import android.view.View.OnTouchListener;
 import android.view.MotionEvent;
 import android.widget.FrameLayout;
 
+import com.abk.banira.R;
+
 import java.util.ArrayList;
 
 public class SlidingView extends FrameLayout

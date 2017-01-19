@@ -46,6 +46,8 @@ import android.os.Process;
 import android.os.SystemClock;
 import android.util.Log;
 
+import com.abk.banira.R;
+
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -62,7 +64,7 @@ public class MirrorLinkMediaBrowserService extends MediaBrowserService
 
 	private static final String TAG = "MirrorLinkMediaBrowserService";
 	// Action to change the repeat mode
-	private static final String CUSTOM_ACTION_REPEAT = "ch.blinkenlights.android.vanilla.REPEAT";
+	private static final String CUSTOM_ACTION_REPEAT = "com.abk.banira.REPEAT";
 	// Action to change the repeat mode
 	private static final String CUSTOM_ACTION_SHUFFLE = "ch.blinkenlights.android.vanilla.SHUFFLE";
 

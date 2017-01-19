@@ -31,6 +31,8 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.RemoteViews;
 
+import com.abk.banira.R;
+
 /**
  * 4x1 widget with many playback controls
  */

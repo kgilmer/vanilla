@@ -38,6 +38,8 @@ import android.graphics.Shader;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 
+import com.abk.banira.R;
+
 /**
  * Class containing utility functions to create Bitmaps display song info and
  * album art.

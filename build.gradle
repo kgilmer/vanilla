@@ -4,7 +4,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.1.2'
+        classpath 'com.android.tools.build:gradle:2.3.0-beta2'
     }
 }
 
@@ -22,12 +22,15 @@ android {
     }
 
     compileSdkVersion 24
-    buildToolsVersion "24.0.2"
+    buildToolsVersion '25.0.0'
 
     defaultConfig {
-        applicationId "ch.blinkenlights.android.vanilla"
-        minSdkVersion 15
+        applicationId "com.abk.banira"
+        minSdkVersion 21
         targetSdkVersion 24
+
+        versionCode 2
+        versionName "1.1"
     }
 
     sourceSets {

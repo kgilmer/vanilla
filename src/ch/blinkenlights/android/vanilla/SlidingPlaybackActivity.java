@@ -29,6 +29,8 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.abk.banira.R;
+
 import java.net.InetAddress;
 
 public class SlidingPlaybackActivity extends PlaybackActivity

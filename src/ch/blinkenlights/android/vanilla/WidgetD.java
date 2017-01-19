@@ -32,6 +32,8 @@ import android.graphics.Bitmap;
 import android.view.View;
 import android.widget.RemoteViews;
 
+import com.abk.banira.R;
+
 /**
  * 2x2 widget that shows cover art in the background and playback controls in
  * a semi-transparent widget on top of the cover.

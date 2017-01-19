@@ -27,6 +27,8 @@ import android.widget.TextView;
 import android.widget.CheckedTextView;
 import android.widget.Checkable;
 
+import com.abk.banira.R;
+
 public class DraggableRow extends LinearLayout implements Checkable {
 	/**
 	 * True if the checkbox is checked

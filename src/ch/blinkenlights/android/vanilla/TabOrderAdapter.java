@@ -29,6 +29,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.BaseAdapter;
 
+import com.abk.banira.R;
+
 /**
  * CursorAdapter backed by MediaStore playlists.
  */

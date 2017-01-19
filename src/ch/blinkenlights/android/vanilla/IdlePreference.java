@@ -31,6 +31,8 @@ import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.abk.banira.R;
+
 /**
  * A preference that provides a dialog with a slider for idle time.
  *

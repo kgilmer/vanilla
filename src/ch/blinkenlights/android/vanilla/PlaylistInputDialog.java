@@ -34,6 +34,8 @@ import android.text.TextWatcher;
 import android.view.WindowManager;
 import android.widget.EditText;
 
+import com.abk.banira.R;
+
 public class PlaylistInputDialog extends DialogFragment
 	implements DialogInterface.OnClickListener, TextWatcher
 {

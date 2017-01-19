@@ -32,6 +32,8 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.widget.RemoteViews;
 
+import com.abk.banira.R;
+
 /**
  * 1x1 widget that shows title, album art, and hidden next and play/pause
  * buttons.

@@ -61,6 +61,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.RemoteViews;
 import android.widget.Toast;
+
+import com.abk.banira.R;
+
 import java.lang.Math;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
