@@ -54,249 +54,240 @@ import com.abk.banira.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+
 /**
  * The preferences activity in which one can change application preferences.
  */
 public class PreferencesActivity extends PreferenceActivity
-	implements SharedPreferences.OnSharedPreferenceChangeListener
-{
+        implements SharedPreferences.OnSharedPreferenceChangeListener {
 
-	/**
-	 * The package name of our external helper app
-	 */
-	private static final String VPLUG_PACKAGE_NAME = "ch.blinkenlights.android.vanillaplug";
+    /**
+     * The package name of our external helper app
+     */
+    private static final String VPLUG_PACKAGE_NAME = "ch.blinkenlights.android.vanillaplug";
 
-	/**
-	 * Initialize the activity, loading the preference specifications.
-	 */
-	@SuppressWarnings("deprecation")
-	@Override
-	protected void onCreate(Bundle savedInstanceState)
-	{
-		ThemeHelper.setTheme(this, R.style.BackActionBar);
-		super.onCreate(savedInstanceState);
-		PlaybackService.getSettings(this).registerOnSharedPreferenceChangeListener(this);
-	}
+    /**
+     * Initialize the activity, loading the preference specifications.
+     */
+    @SuppressWarnings("deprecation")
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ThemeHelper.setTheme(this, R.style.BackActionBar);
+        super.onCreate(savedInstanceState);
+        PlaybackService.getSettings(this).registerOnSharedPreferenceChangeListener(this);
+    }
 
-	@Override
-	protected void onDestroy() {
-		super.onDestroy();
-		PlaybackService.getSettings(this).unregisterOnSharedPreferenceChangeListener(this);
-	}
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        PlaybackService.getSettings(this).unregisterOnSharedPreferenceChangeListener(this);
+    }
 
-	@Override
-	public void onBuildHeaders(List<Header> target)
-	{
-		ArrayList<Header> tmp = new ArrayList<Header>();
-		loadHeadersFromResource(R.xml.preference_headers, tmp);
+    @Override
+    public void onBuildHeaders(List<Header> target) {
+        ArrayList<Header> tmp = new ArrayList<Header>();
+        loadHeadersFromResource(R.xml.preference_headers, tmp);
 
-		for(Header obj : tmp) {
-			// Themes are 5.x only, so do not add PreferencesTheme on holo devices
-			if (!ThemeHelper.usesHoloTheme() || !obj.fragment.equals(PreferencesTheme.class.getName()))
-				target.add(obj);
-		}
-	}
+        for (Header obj : tmp) {
+            // Themes are 5.x only, so do not add PreferencesTheme on holo devices
+            if (!ThemeHelper.usesHoloTheme() || !obj.fragment.equals(PreferencesTheme.class.getName()))
+                target.add(obj);
+        }
+    }
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item)
-	{
-		if (item.getItemId() == android.R.id.home) {
-			finish();
-			return true;
-		} else {
-			return super.onOptionsItemSelected(item);
-		}
-	}
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
+    }
 
-	@Override
-	public void onSharedPreferenceChanged (SharedPreferences sharedPreferences, String key) {
-		if (PrefKeys.SELECTED_THEME.equals(key)) {
-			// this gets called by all preference instances: we force them to redraw
-			// themselfes if the theme changed
-			recreate();
-		}
-	}
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        if (PrefKeys.SELECTED_THEME.equals(key)) {
+            // this gets called by all preference instances: we force them to redraw
+            // themselfes if the theme changed
+            recreate();
+        }
+    }
 
-	public static class AudioFragment extends PreferenceFragment {
-		@Override
-		public void onCreate(Bundle savedInstanceState)
-		{
-			super.onCreate(savedInstanceState);
-			addPreferencesFromResource(R.xml.preference_audio);
-		}
-	}
+    public static class AudioFragment extends PreferenceFragment {
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            addPreferencesFromResource(R.xml.preference_audio);
+        }
+    }
 
-	public static class ReplayGainFragment extends PreferenceFragment {
-		CheckBoxPreference cbTrackReplayGain;
-		CheckBoxPreference cbAlbumReplayGain;
-		SeekBarPreference sbGainBump;
-		SeekBarPreference sbUntaggedDebump;
+    public static class ReplayGainFragment extends PreferenceFragment {
+        CheckBoxPreference cbTrackReplayGain;
+        CheckBoxPreference cbAlbumReplayGain;
+        SeekBarPreference sbGainBump;
+        SeekBarPreference sbUntaggedDebump;
 
-		@Override
-		public void onCreate(Bundle savedInstanceState)
-		{
-			super.onCreate(savedInstanceState);
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
 
-			addPreferencesFromResource(R.xml.preference_replaygain);
-			cbTrackReplayGain = (CheckBoxPreference)findPreference(PrefKeys.ENABLE_TRACK_REPLAYGAIN);
-			cbAlbumReplayGain = (CheckBoxPreference)findPreference(PrefKeys.ENABLE_ALBUM_REPLAYGAIN);
-			sbGainBump = (SeekBarPreference)findPreference(PrefKeys.REPLAYGAIN_BUMP);
-			sbUntaggedDebump = (SeekBarPreference)findPreference(PrefKeys.REPLAYGAIN_UNTAGGED_DEBUMP);
+            addPreferencesFromResource(R.xml.preference_replaygain);
+            cbTrackReplayGain = (CheckBoxPreference) findPreference(PrefKeys.ENABLE_TRACK_REPLAYGAIN);
+            cbAlbumReplayGain = (CheckBoxPreference) findPreference(PrefKeys.ENABLE_ALBUM_REPLAYGAIN);
+            sbGainBump = (SeekBarPreference) findPreference(PrefKeys.REPLAYGAIN_BUMP);
+            sbUntaggedDebump = (SeekBarPreference) findPreference(PrefKeys.REPLAYGAIN_UNTAGGED_DEBUMP);
 
-			Preference.OnPreferenceClickListener pcListener = new Preference.OnPreferenceClickListener() {
-				public boolean onPreferenceClick(Preference preference) {
-					updateConfigWidgets();
-					return false;
-				}
-			};
-			
-			cbTrackReplayGain.setOnPreferenceClickListener(pcListener);
-			cbAlbumReplayGain.setOnPreferenceClickListener(pcListener);
-			updateConfigWidgets();
-		}
+            Preference.OnPreferenceClickListener pcListener = new Preference.OnPreferenceClickListener() {
+                public boolean onPreferenceClick(Preference preference) {
+                    updateConfigWidgets();
+                    return false;
+                }
+            };
 
-		private void updateConfigWidgets() {
-			boolean rgOn = (cbTrackReplayGain.isChecked() || cbAlbumReplayGain.isChecked());
-			sbGainBump.setEnabled(rgOn);
-			sbUntaggedDebump.setEnabled(rgOn);
-		}
-	}
+            cbTrackReplayGain.setOnPreferenceClickListener(pcListener);
+            cbAlbumReplayGain.setOnPreferenceClickListener(pcListener);
+            updateConfigWidgets();
+        }
 
-	public static class EqualizerFragment extends PreferenceFragment {
-		@Override
-		public void onCreate(Bundle savedInstanceState)
-		{
-			super.onCreate(savedInstanceState);
+        private void updateConfigWidgets() {
+            boolean rgOn = (cbTrackReplayGain.isChecked() || cbAlbumReplayGain.isChecked());
+            sbGainBump.setEnabled(rgOn);
+            sbUntaggedDebump.setEnabled(rgOn);
+        }
+    }
 
-			Context context = getActivity();
-			int mAudioSession = 0;
-			if (PlaybackService.hasInstance()) {
-				PlaybackService service = PlaybackService.get(context);
-				mAudioSession = service.getAudioSession();
-			}
+    public static class EqualizerFragment extends PreferenceFragment {
 
-			try {
-				final Intent effects = new Intent(AudioEffect.ACTION_DISPLAY_AUDIO_EFFECT_CONTROL_PANEL);
-				effects.putExtra(AudioEffect.EXTRA_PACKAGE_NAME, context.getPackageName());
-				effects.putExtra(AudioEffect.EXTRA_AUDIO_SESSION, mAudioSession);
-				startActivityForResult(effects, 0);
-			} catch (Exception e) {
-				// ignored. Whee!
-			}
+        @SuppressFBWarnings(
+                value = "DE_MIGHT_IGNORE",
+                justification = "Failure case valid.")
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
 
-			getActivity().finish();
-		}
-	}
+            Context context = getActivity();
+            int mAudioSession = 0;
+            if (PlaybackService.hasInstance()) {
+                PlaybackService service = PlaybackService.get(context);
+                mAudioSession = service.getAudioSession();
+            }
 
-	public static class PlaybackFragment extends PreferenceFragment {
-		@Override
-		public void onCreate(Bundle savedInstanceState)
-		{
-			super.onCreate(savedInstanceState);
-			addPreferencesFromResource(R.xml.preference_playback);
-		}
-	}
+            try {
+                final Intent effects = new Intent(AudioEffect.ACTION_DISPLAY_AUDIO_EFFECT_CONTROL_PANEL);
+                effects.putExtra(AudioEffect.EXTRA_PACKAGE_NAME, context.getPackageName());
+                effects.putExtra(AudioEffect.EXTRA_AUDIO_SESSION, mAudioSession);
+                startActivityForResult(effects, 0);
+            } catch (Exception e) {
+                // ignored. Whee!
+            }
 
-	public static class LibraryFragment extends PreferenceFragment {
-		@Override
-		public void onCreate(Bundle savedInstanceState)
-		{
-			super.onCreate(savedInstanceState);
-			addPreferencesFromResource(R.xml.preference_library);
-		}
-	}
+            getActivity().finish();
+        }
+    }
 
-	public static class NotificationsFragment extends PreferenceFragment {
-		@Override
-		public void onCreate(Bundle savedInstanceState)
-		{
-			super.onCreate(savedInstanceState);
-			addPreferencesFromResource(R.xml.preference_notifications);
-		}
-	}
+    public static class PlaybackFragment extends PreferenceFragment {
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            addPreferencesFromResource(R.xml.preference_playback);
+        }
+    }
 
-	public static class ShakeFragment extends PreferenceFragment {
-		@Override
-		public void onCreate(Bundle savedInstanceState)
-		{
-			super.onCreate(savedInstanceState);
-			addPreferencesFromResource(R.xml.preference_shake);
-		}
-	}
+    public static class LibraryFragment extends PreferenceFragment {
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            addPreferencesFromResource(R.xml.preference_library);
+        }
+    }
 
-	public static class CoverArtFragment extends PreferenceFragment {
-		@Override
-		public void onCreate(Bundle savedInstanceState)
-		{
-			super.onCreate(savedInstanceState);
-			addPreferencesFromResource(R.xml.preference_coverart);
-		}
-	}
+    public static class NotificationsFragment extends PreferenceFragment {
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            addPreferencesFromResource(R.xml.preference_notifications);
+        }
+    }
 
-	public static class MiscFragment extends PreferenceFragment {
-		@Override
-		public void onCreate(Bundle savedInstanceState)
-		{
-			super.onCreate(savedInstanceState);
-			addPreferencesFromResource(R.xml.preference_misc);
-		}
-	}
+    public static class ShakeFragment extends PreferenceFragment {
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            addPreferencesFromResource(R.xml.preference_shake);
+        }
+    }
 
-	public static class AboutFragment extends WebViewFragment {
-		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-		{
-			WebView view = (WebView)super.onCreateView(inflater, container, savedInstanceState);
-			view.getSettings().setJavaScriptEnabled(true);
+    public static class CoverArtFragment extends PreferenceFragment {
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            addPreferencesFromResource(R.xml.preference_coverart);
+        }
+    }
 
-			TypedValue value = new TypedValue();
-			getActivity().getTheme().resolveAttribute(R.attr.overlay_foreground_color, value, true);
-			String fontColor = TypedValue.coerceToString(value.type, value.data);
-			view.loadUrl("file:///android_asset/about.html?"+Uri.encode(fontColor));
-			view.setBackgroundColor(Color.TRANSPARENT);
-			return view;
-		}
-	}
+    public static class MiscFragment extends PreferenceFragment {
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            addPreferencesFromResource(R.xml.preference_misc);
+        }
+    }
 
-	public static class HeadsetLaunchFragment extends PreferenceFragment {
-		@Override
-		public void onCreate(Bundle savedInstanceState)
-		{
-			super.onCreate(savedInstanceState);
+    public static class AboutFragment extends WebViewFragment {
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            WebView view = (WebView) super.onCreateView(inflater, container, savedInstanceState);
+            view.getSettings().setJavaScriptEnabled(true);
 
-			Activity activity = getActivity();
-			Intent intent = activity.getPackageManager().getLaunchIntentForPackage(VPLUG_PACKAGE_NAME);
+            TypedValue value = new TypedValue();
+            getActivity().getTheme().resolveAttribute(R.attr.overlay_foreground_color, value, true);
+            String fontColor = TypedValue.coerceToString(value.type, value.data);
+            view.loadUrl("file:///android_asset/about.html?" + Uri.encode(fontColor));
+            view.setBackgroundColor(Color.TRANSPARENT);
+            return view;
+        }
+    }
 
-			if (intent != null) {
-				startActivity(intent);
-				activity.finish();
-			} else {
-				// package is not installed, ask user to install it
-				new AlertDialog.Builder(activity)
-				.setTitle(R.string.headset_launch_title)
-				.setMessage(R.string.headset_launch_app_missing)
-				.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int id) {
-						Intent marketIntent = new Intent(Intent.ACTION_VIEW);
-						marketIntent.setData(Uri.parse("market://details?id="+VPLUG_PACKAGE_NAME));
-						startActivity(marketIntent);
-						getActivity().finish();
-					}
-				})
-				.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int id) {
-						getActivity().finish();
-					}
-				})
-				.show();
-			}
-		}
-	}
+    public static class HeadsetLaunchFragment extends PreferenceFragment {
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
 
-	@Override
-	protected boolean isValidFragment(String fragmentName) {
-		return true;
-	}
+            Activity activity = getActivity();
+            Intent intent = activity.getPackageManager().getLaunchIntentForPackage(VPLUG_PACKAGE_NAME);
+
+            if (intent != null) {
+                startActivity(intent);
+                activity.finish();
+            } else {
+                // package is not installed, ask user to install it
+                new AlertDialog.Builder(activity)
+                        .setTitle(R.string.headset_launch_title)
+                        .setMessage(R.string.headset_launch_app_missing)
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Intent marketIntent = new Intent(Intent.ACTION_VIEW);
+                                marketIntent.setData(Uri.parse("market://details?id=" + VPLUG_PACKAGE_NAME));
+                                startActivity(marketIntent);
+                                getActivity().finish();
+                            }
+                        })
+                        .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                getActivity().finish();
+                            }
+                        })
+                        .show();
+            }
+        }
+    }
+
+    @Override
+    protected boolean isValidFragment(String fragmentName) {
+        return true;
+    }
 
 
 }
