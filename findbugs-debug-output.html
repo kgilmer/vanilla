@@ -1,0 +1,3323 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>FindBugs Report</title>
+<style type="text/css">
+		.tablerow0 {
+			background: #EEEEEE;
+		}
+
+		.tablerow1 {
+			background: white;
+		}
+
+		.detailrow0 {
+			background: #EEEEEE;
+		}
+
+		.detailrow1 {
+			background: white;
+		}
+
+		.tableheader {
+			background: #b9b9fe;
+			font-size: larger;
+		}
+
+		.tablerow0:hover, .tablerow1:hover {
+			background: #aaffaa;
+		}
+
+		.priority-1 {
+		    color: red;
+		    font-weight: bold;
+		}
+		.priority-2 {
+		    color: orange;
+		    font-weight: bold;
+		}
+		.priority-3 {
+		    color: green;
+		    font-weight: bold;
+		}
+		.priority-4 {
+		    color: blue;
+		    font-weight: bold;
+		}
+		</style>
+<script type="text/javascript">
+			function toggleRow(elid) {
+				if (document.getElementById) {
+					element = document.getElementById(elid);
+					if (element) {
+						if (element.style.display == 'none') {
+							element.style.display = 'block';
+							//window.status = 'Toggle on!';
+						} else {
+							element.style.display = 'none';
+							//window.status = 'Toggle off!';
+						}
+					}
+				}
+			}
+		</script>
+</head>
+<body>
+<h1>
+<a href="http://findbugs.sourceforge.net">FindBugs</a> Report</h1>
+<h2>Project Information</h2>
+<p>Project: 
+		</p>
+<p>FindBugs version: 3.0.1</p>
+<p>Code analyzed:</p>
+<ul>
+<li>/Users/kgilmer/dev/repos/vanilla/build/intermediates/classes/debug</li>
+</ul>
+<p>
+<br/>
+<br/>
+</p>
+<h2>Metrics</h2>
+<p>14393 lines of code analyzed,
+	in 234 classes, 
+	in 7 packages.</p>
+<table width="500" cellpadding="5" cellspacing="2">
+<tr class="tableheader">
+<th align="left">Metric</th>
+<th align="right">Total</th>
+<th align="right">Density*</th>
+</tr>
+<tr class="tablerow0">
+<td>High Priority Warnings</td>
+<td align="right">28</td>
+<td align="right">1.95</td>
+</tr>
+<tr class="tablerow1">
+<td>Medium Priority Warnings</td>
+<td align="right">145</td>
+<td align="right">10.07</td>
+</tr>
+<tr class="$totalClass">
+<td>
+<b>Total Warnings</b>
+</td>
+<td align="right">
+<b>173</b>
+</td>
+<td align="right">
+<b>12.02</b>
+</td>
+</tr>
+</table>
+<p>
+<i>(* Defects per Thousand lines of non-commenting source statements)</i>
+</p>
+<p>
+<br/>
+<br/>
+</p>
+<h2>Contents</h2>
+<ul>
+<li>
+<a href="#Warnings_BAD_PRACTICE">Bad practice Warnings</a>
+</li>
+<li>
+<a href="#Warnings_CORRECTNESS">Correctness Warnings</a>
+</li>
+<li>
+<a href="#Warnings_EXPERIMENTAL">Experimental Warnings</a>
+</li>
+<li>
+<a href="#Warnings_I18N">Internationalization Warnings</a>
+</li>
+<li>
+<a href="#Warnings_MALICIOUS_CODE">Malicious code vulnerability Warnings</a>
+</li>
+<li>
+<a href="#Warnings_MT_CORRECTNESS">Multithreaded correctness Warnings</a>
+</li>
+<li>
+<a href="#Warnings_PERFORMANCE">Performance Warnings</a>
+</li>
+<li>
+<a href="#Warnings_STYLE">Dodgy code Warnings</a>
+</li>
+<li>
+<a href="#Details">Details</a>
+</li>
+</ul>
+<h1>Summary</h1>
+<table width="500" cellpadding="5" cellspacing="2">
+<tr class="tableheader">
+<th align="left">Warning Type</th>
+<th align="right">Number</th>
+</tr>
+<tr class="tablerow0">
+<td>
+<a href="#Warnings_BAD_PRACTICE">Bad practice Warnings</a>
+</td>
+<td align="right">32</td>
+</tr>
+<tr class="tablerow1">
+<td>
+<a href="#Warnings_CORRECTNESS">Correctness Warnings</a>
+</td>
+<td align="right">11</td>
+</tr>
+<tr class="tablerow0">
+<td>
+<a href="#Warnings_EXPERIMENTAL">Experimental Warnings</a>
+</td>
+<td align="right">2</td>
+</tr>
+<tr class="tablerow1">
+<td>
+<a href="#Warnings_I18N">Internationalization Warnings</a>
+</td>
+<td align="right">9</td>
+</tr>
+<tr class="tablerow0">
+<td>
+<a href="#Warnings_MALICIOUS_CODE">Malicious code vulnerability Warnings</a>
+</td>
+<td align="right">27</td>
+</tr>
+<tr class="tablerow1">
+<td>
+<a href="#Warnings_MT_CORRECTNESS">Multithreaded correctness Warnings</a>
+</td>
+<td align="right">6</td>
+</tr>
+<tr class="tablerow0">
+<td>
+<a href="#Warnings_PERFORMANCE">Performance Warnings</a>
+</td>
+<td align="right">21</td>
+</tr>
+<tr class="tablerow1">
+<td>
+<a href="#Warnings_STYLE">Dodgy code Warnings</a>
+</td>
+<td align="right">65</td>
+</tr>
+<tr class="tablerow0">
+<td>
+<b>Total</b>
+</td>
+<td align="right">
+<b>173</b>
+</td>
+</tr>
+</table>
+<h1>Warnings</h1>
+<p>Click on a warning row to see full context information.</p>
+<h2>
+<a name="Warnings_BAD_PRACTICE">Bad practice Warnings</a>
+</h2>
+<table class="warningtable" width="100%" cellspacing="0">
+<tr class="tableheader">
+<th align="left">Code</th>
+<th align="left">Warning</th>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N70611');">
+<td>
+<span class="priority-2">Eq</span>
+</td>
+<td>ch.blinkenlights.android.vanilla.Song defines compareTo(Song) and uses Object.equals()</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N70611" style="display: none;">
+<a href="#EQ_COMPARETO_USE_OBJECT_EQUALS">Bug type EQ_COMPARETO_USE_OBJECT_EQUALS (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.Song<br/>In method ch.blinkenlights.android.vanilla.Song.compareTo(Song)<br/>At Song.java:[lines 252-256]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N74335');">
+<td>
+<span class="priority-2">Nm</span>
+</td>
+<td>The class name com.abk.banira.R$array doesn't start with an upper case letter</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N74335" style="display: none;">
+<a href="#NM_CLASS_NAMING_CONVENTION">Bug type NM_CLASS_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.abk.banira.R$array<br/>At R.java:[line 11]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N74370');">
+<td>
+<span class="priority-2">Nm</span>
+</td>
+<td>The class name com.abk.banira.R$attr doesn't start with an upper case letter</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N74370" style="display: none;">
+<a href="#NM_CLASS_NAMING_CONVENTION">Bug type NM_CLASS_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.abk.banira.R$attr<br/>At R.java:[line 31]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N74405');">
+<td>
+<span class="priority-2">Nm</span>
+</td>
+<td>The class name com.abk.banira.R$color doesn't start with an upper case letter</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N74405" style="display: none;">
+<a href="#NM_CLASS_NAMING_CONVENTION">Bug type NM_CLASS_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.abk.banira.R$color<br/>At R.java:[line 338]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N74440');">
+<td>
+<span class="priority-2">Nm</span>
+</td>
+<td>The class name com.abk.banira.R$dimen doesn't start with an upper case letter</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N74440" style="display: none;">
+<a href="#NM_CLASS_NAMING_CONVENTION">Bug type NM_CLASS_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.abk.banira.R$dimen<br/>At R.java:[line 356]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N74475');">
+<td>
+<span class="priority-2">Nm</span>
+</td>
+<td>The class name com.abk.banira.R$drawable doesn't start with an upper case letter</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N74475" style="display: none;">
+<a href="#NM_CLASS_NAMING_CONVENTION">Bug type NM_CLASS_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.abk.banira.R$drawable<br/>At R.java:[line 364]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N74510');">
+<td>
+<span class="priority-2">Nm</span>
+</td>
+<td>The class name com.abk.banira.R$id doesn't start with an upper case letter</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N74510" style="display: none;">
+<a href="#NM_CLASS_NAMING_CONVENTION">Bug type NM_CLASS_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.abk.banira.R$id<br/>At R.java:[line 425]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N74545');">
+<td>
+<span class="priority-2">Nm</span>
+</td>
+<td>The class name com.abk.banira.R$layout doesn't start with an upper case letter</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N74545" style="display: none;">
+<a href="#NM_CLASS_NAMING_CONVENTION">Bug type NM_CLASS_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.abk.banira.R$layout<br/>At R.java:[line 501]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N74580');">
+<td>
+<span class="priority-2">Nm</span>
+</td>
+<td>The class name com.abk.banira.R$plurals doesn't start with an upper case letter</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N74580" style="display: none;">
+<a href="#NM_CLASS_NAMING_CONVENTION">Bug type NM_CLASS_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.abk.banira.R$plurals<br/>At R.java:[line 530]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N74615');">
+<td>
+<span class="priority-2">Nm</span>
+</td>
+<td>The class name com.abk.banira.R$raw doesn't start with an upper case letter</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N74615" style="display: none;">
+<a href="#NM_CLASS_NAMING_CONVENTION">Bug type NM_CLASS_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.abk.banira.R$raw<br/>At R.java:[line 540]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N74650');">
+<td>
+<span class="priority-2">Nm</span>
+</td>
+<td>The class name com.abk.banira.R$string doesn't start with an upper case letter</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N74650" style="display: none;">
+<a href="#NM_CLASS_NAMING_CONVENTION">Bug type NM_CLASS_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.abk.banira.R$string<br/>At R.java:[line 543]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N74685');">
+<td>
+<span class="priority-2">Nm</span>
+</td>
+<td>The class name com.abk.banira.R$style doesn't start with an upper case letter</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N74685" style="display: none;">
+<a href="#NM_CLASS_NAMING_CONVENTION">Bug type NM_CLASS_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.abk.banira.R$style<br/>At R.java:[line 764]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N74876');">
+<td>
+<span class="priority-2">Nm</span>
+</td>
+<td>The class name com.abk.banira.R$styleable doesn't start with an upper case letter</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N74876" style="display: none;">
+<a href="#NM_CLASS_NAMING_CONVENTION">Bug type NM_CLASS_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.abk.banira.R$styleable<br/>At R.java:[lines 824-1307]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N74911');">
+<td>
+<span class="priority-2">Nm</span>
+</td>
+<td>The class name com.abk.banira.R$xml doesn't start with an upper case letter</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N74911" style="display: none;">
+<a href="#NM_CLASS_NAMING_CONVENTION">Bug type NM_CLASS_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.abk.banira.R$xml<br/>At R.java:[line 807]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N72577');">
+<td>
+<span class="priority-2">RR</span>
+</td>
+<td>ch.blinkenlights.bastp.Bastp.getTags(RandomAccessFile) ignores result of java.io.RandomAccessFile.read(byte[])</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N72577" style="display: none;">
+<a href="#RR_NOT_CHECKED">Bug type RR_NOT_CHECKED (click for details)</a>
+<br/>In class ch.blinkenlights.bastp.Bastp<br/>In method ch.blinkenlights.bastp.Bastp.getTags(RandomAccessFile)<br/>Called method java.io.RandomAccessFile.read(byte[])<br/>At Bastp.java:[line 52]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N72715');">
+<td>
+<span class="priority-2">RR</span>
+</td>
+<td>ch.blinkenlights.bastp.Common.parse_vorbis_comment(RandomAccessFile, PageInfo$PageParser, long, long) ignores result of java.io.RandomAccessFile.read(byte[])</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N72715" style="display: none;">
+<a href="#RR_NOT_CHECKED">Bug type RR_NOT_CHECKED (click for details)</a>
+<br/>In class ch.blinkenlights.bastp.Common<br/>In method ch.blinkenlights.bastp.Common.parse_vorbis_comment(RandomAccessFile, PageInfo$PageParser, long, long)<br/>Called method java.io.RandomAccessFile.read(byte[])<br/>At Common.java:[line 108]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N72784');">
+<td>
+<span class="priority-2">RR</span>
+</td>
+<td>ch.blinkenlights.bastp.Common.raf2le32(RandomAccessFile, long) ignores result of java.io.RandomAccessFile.read(byte[])</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N72784" style="display: none;">
+<a href="#RR_NOT_CHECKED">Bug type RR_NOT_CHECKED (click for details)</a>
+<br/>In class ch.blinkenlights.bastp.Common<br/>In method ch.blinkenlights.bastp.Common.raf2le32(RandomAccessFile, long)<br/>Called method java.io.RandomAccessFile.read(byte[])<br/>At Common.java:[line 46]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N72853');">
+<td>
+<span class="priority-2">RR</span>
+</td>
+<td>ch.blinkenlights.bastp.FlacFile.parse_streaminfo_block(RandomAccessFile, long, long) ignores result of java.io.RandomAccessFile.read(byte[])</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N72853" style="display: none;">
+<a href="#RR_NOT_CHECKED">Bug type RR_NOT_CHECKED (click for details)</a>
+<br/>In class ch.blinkenlights.bastp.FlacFile<br/>In method ch.blinkenlights.bastp.FlacFile.parse_streaminfo_block(RandomAccessFile, long, long)<br/>Called method java.io.RandomAccessFile.read(byte[])<br/>At FlacFile.java:[line 103]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N73064');">
+<td>
+<span class="priority-2">RR</span>
+</td>
+<td>ch.blinkenlights.bastp.ID3v2File.getTags(RandomAccessFile) ignores result of java.io.RandomAccessFile.read(byte[])</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N73064" style="display: none;">
+<a href="#RR_NOT_CHECKED">Bug type RR_NOT_CHECKED (click for details)</a>
+<br/>In class ch.blinkenlights.bastp.ID3v2File<br/>In method ch.blinkenlights.bastp.ID3v2File.getTags(RandomAccessFile)<br/>Called method java.io.RandomAccessFile.read(byte[])<br/>At ID3v2File.java:[line 44]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N73133');">
+<td>
+<span class="priority-2">RR</span>
+</td>
+<td>ch.blinkenlights.bastp.LameHeader.parseLameHeader(RandomAccessFile, long) ignores result of java.io.RandomAccessFile.read(byte[])</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N73133" style="display: none;">
+<a href="#RR_NOT_CHECKED">Bug type RR_NOT_CHECKED (click for details)</a>
+<br/>In class ch.blinkenlights.bastp.LameHeader<br/>In method ch.blinkenlights.bastp.LameHeader.parseLameHeader(RandomAccessFile, long)<br/>Called method java.io.RandomAccessFile.read(byte[])<br/>At LameHeader.java:[line 58]<br/>Another occurrence at LameHeader.java:[line 66]<br/>Another occurrence at LameHeader.java:[line 87]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N73369');">
+<td>
+<span class="priority-2">RR</span>
+</td>
+<td>ch.blinkenlights.bastp.Mp4File.getTags(RandomAccessFile) ignores result of java.io.RandomAccessFile.read(byte[])</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N73369" style="display: none;">
+<a href="#RR_NOT_CHECKED">Bug type RR_NOT_CHECKED (click for details)</a>
+<br/>In class ch.blinkenlights.bastp.Mp4File<br/>In method ch.blinkenlights.bastp.Mp4File.getTags(RandomAccessFile)<br/>Called method java.io.RandomAccessFile.read(byte[])<br/>At Mp4File.java:[line 86]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N73438');">
+<td>
+<span class="priority-2">RR</span>
+</td>
+<td>ch.blinkenlights.bastp.Mp4File.readIntoBuffer(RandomAccessFile, int) ignores result of java.io.RandomAccessFile.read(byte[], int, int)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N73438" style="display: none;">
+<a href="#RR_NOT_CHECKED">Bug type RR_NOT_CHECKED (click for details)</a>
+<br/>In class ch.blinkenlights.bastp.Mp4File<br/>In method ch.blinkenlights.bastp.Mp4File.readIntoBuffer(RandomAccessFile, int)<br/>Called method java.io.RandomAccessFile.read(byte[], int, int)<br/>At Mp4File.java:[line 175]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N73560');">
+<td>
+<span class="priority-2">RR</span>
+</td>
+<td>ch.blinkenlights.bastp.Mp4File.getTags(RandomAccessFile) ignores result of java.io.RandomAccessFile.skipBytes(int)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N73560" style="display: none;">
+<a href="#SR_NOT_CHECKED">Bug type SR_NOT_CHECKED (click for details)</a>
+<br/>In class ch.blinkenlights.bastp.Mp4File<br/>In method ch.blinkenlights.bastp.Mp4File.getTags(RandomAccessFile)<br/>Called method java.io.RandomAccessFile.skipBytes(int)<br/>At Mp4File.java:[line 124]<br/>Another occurrence at Mp4File.java:[line 128]<br/>Another occurrence at Mp4File.java:[line 135]<br/>Another occurrence at Mp4File.java:[line 142]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N73662');">
+<td>
+<span class="priority-2">RR</span>
+</td>
+<td>ch.blinkenlights.bastp.Mp4File.readIntoBuffer(RandomAccessFile, int) ignores result of java.io.RandomAccessFile.skipBytes(int)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N73662" style="display: none;">
+<a href="#SR_NOT_CHECKED">Bug type SR_NOT_CHECKED (click for details)</a>
+<br/>In class ch.blinkenlights.bastp.Mp4File<br/>In method ch.blinkenlights.bastp.Mp4File.readIntoBuffer(RandomAccessFile, int)<br/>Called method java.io.RandomAccessFile.skipBytes(int)<br/>At Mp4File.java:[line 177]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N73869');">
+<td>
+<span class="priority-2">RR</span>
+</td>
+<td>ch.blinkenlights.bastp.OggFile.parse_ogg_vorbis_comment(RandomAccessFile, long, long) ignores result of java.io.RandomAccessFile.read(byte[])</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N73869" style="display: none;">
+<a href="#RR_NOT_CHECKED">Bug type RR_NOT_CHECKED (click for details)</a>
+<br/>In class ch.blinkenlights.bastp.OggFile<br/>In method ch.blinkenlights.bastp.OggFile.parse_ogg_vorbis_comment(RandomAccessFile, long, long)<br/>Called method java.io.RandomAccessFile.read(byte[])<br/>At OggFile.java:[line 129]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N73938');">
+<td>
+<span class="priority-2">RR</span>
+</td>
+<td>ch.blinkenlights.bastp.OggFile.parse_ogg_vorbis_identification(RandomAccessFile, long, long) ignores result of java.io.RandomAccessFile.read(byte[])</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N73938" style="display: none;">
+<a href="#RR_NOT_CHECKED">Bug type RR_NOT_CHECKED (click for details)</a>
+<br/>In class ch.blinkenlights.bastp.OggFile<br/>In method ch.blinkenlights.bastp.OggFile.parse_ogg_vorbis_identification(RandomAccessFile, long, long)<br/>Called method java.io.RandomAccessFile.read(byte[])<br/>At OggFile.java:[line 155]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N74197');">
+<td>
+<span class="priority-2">RR</span>
+</td>
+<td>ch.blinkenlights.bastp.OpusFile.parse_opus_head(RandomAccessFile, long, long) ignores result of java.io.RandomAccessFile.read(byte[])</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N74197" style="display: none;">
+<a href="#RR_NOT_CHECKED">Bug type RR_NOT_CHECKED (click for details)</a>
+<br/>In class ch.blinkenlights.bastp.OpusFile<br/>In method ch.blinkenlights.bastp.OpusFile.parse_opus_head(RandomAccessFile, long, long)<br/>Called method java.io.RandomAccessFile.read(byte[])<br/>At OpusFile.java:[line 92]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N74266');">
+<td>
+<span class="priority-2">RR</span>
+</td>
+<td>ch.blinkenlights.bastp.OpusFile.parse_opus_vorbis_comment(RandomAccessFile, long, long) ignores result of java.io.RandomAccessFile.read(byte[])</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N74266" style="display: none;">
+<a href="#RR_NOT_CHECKED">Bug type RR_NOT_CHECKED (click for details)</a>
+<br/>In class ch.blinkenlights.bastp.OpusFile<br/>In method ch.blinkenlights.bastp.OpusFile.parse_opus_vorbis_comment(RandomAccessFile, long, long)<br/>Called method java.io.RandomAccessFile.read(byte[])<br/>At OpusFile.java:[line 119]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N76040');">
+<td>
+<span class="priority-2">RV</span>
+</td>
+<td>Exceptional return value of java.io.File.createNewFile() ignored in new com.mobeta.android.dslv.DragSortListView$DragSortTracker(DragSortListView)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N76040" style="display: none;">
+<a href="#RV_RETURN_VALUE_IGNORED_BAD_PRACTICE">Bug type RV_RETURN_VALUE_IGNORED_BAD_PRACTICE (click for details)</a>
+<br/>In class com.mobeta.android.dslv.DragSortListView$DragSortTracker<br/>In method new com.mobeta.android.dslv.DragSortListView$DragSortTracker(DragSortListView)<br/>Called method java.io.File.createNewFile()<br/>At DragSortListView.java:[line 2970]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N66377');">
+<td>
+<span class="priority-2">Se</span>
+</td>
+<td>android.support.v4.view.ViewPager$ViewPositionComparator implements Comparator but not Serializable</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N66377" style="display: none;">
+<a href="#SE_COMPARATOR_SHOULD_BE_SERIALIZABLE">Bug type SE_COMPARATOR_SHOULD_BE_SERIALIZABLE (click for details)</a>
+<br/>In class android.support.v4.view.ViewPager$ViewPositionComparator<br/>At ViewPager.java:[lines 2964-2972]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N71565');">
+<td>
+<span class="priority-2">Se</span>
+</td>
+<td>ch.blinkenlights.android.vanilla.SongTimeline$FlagComparator implements Comparator but not Serializable</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N71565" style="display: none;">
+<a href="#SE_COMPARATOR_SHOULD_BE_SERIALIZABLE">Bug type SE_COMPARATOR_SHOULD_BE_SERIALIZABLE (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.SongTimeline$FlagComparator<br/>At SongTimeline.java:[lines 310-314]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N71600');">
+<td>
+<span class="priority-2">Se</span>
+</td>
+<td>ch.blinkenlights.android.vanilla.SongTimeline$IdComparator implements Comparator but not Serializable</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N71600" style="display: none;">
+<a href="#SE_COMPARATOR_SHOULD_BE_SERIALIZABLE">Bug type SE_COMPARATOR_SHOULD_BE_SERIALIZABLE (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.SongTimeline$IdComparator<br/>At SongTimeline.java:[lines 295-303]</p>
+</td>
+</tr>
+</table>
+<h2>
+<a name="Warnings_CORRECTNESS">Correctness Warnings</a>
+</h2>
+<table class="warningtable" width="100%" cellspacing="0">
+<tr class="tableheader">
+<th align="left">Code</th>
+<th align="left">Warning</th>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N67164');">
+<td>
+<span class="priority-2">ICAST</span>
+</td>
+<td>int value cast to float and then passed to Math.round in ch.blinkenlights.android.vanilla.CoverCache$BitmapDiskCache.getSampleSize(InputStream, BitmapFactory$Options, long)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N67164" style="display: none;">
+<a href="#ICAST_INT_CAST_TO_FLOAT_PASSED_TO_ROUND">Bug type ICAST_INT_CAST_TO_FLOAT_PASSED_TO_ROUND (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.CoverCache$BitmapDiskCache<br/>In method ch.blinkenlights.android.vanilla.CoverCache$BitmapDiskCache.getSampleSize(InputStream, BitmapFactory$Options, long)<br/>At CoverCache.java:[line 503]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N65752');">
+<td>
+<span class="priority-2">NP</span>
+</td>
+<td>Possible null pointer dereference of tabTitleView in android.support.iosched.tabs.SlidingTabLayout.populateTabStrip()</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N65752" style="display: none;">
+<a href="#NP_NULL_ON_SOME_PATH">Bug type NP_NULL_ON_SOME_PATH (click for details)</a>
+<br/>In class android.support.iosched.tabs.SlidingTabLayout<br/>In method android.support.iosched.tabs.SlidingTabLayout.populateTabStrip()<br/>Value loaded from tabTitleView<br/>Dereferenced at SlidingTabLayout.java:[line 215]<br/>Known null at SlidingTabLayout.java:[line 205]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N65825');">
+<td>
+<span class="priority-2">NP</span>
+</td>
+<td>Possible null pointer dereference of lp in android.support.v4.view.ViewPager.onMeasure(int, int)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N65825" style="display: none;">
+<a href="#NP_NULL_ON_SOME_PATH">Bug type NP_NULL_ON_SOME_PATH (click for details)</a>
+<br/>In class android.support.v4.view.ViewPager<br/>In method android.support.v4.view.ViewPager.onMeasure(int, int)<br/>Value loaded from lp<br/>Dereferenced at ViewPager.java:[line 1481]<br/>Known null at ViewPager.java:[line 1480]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N65898');">
+<td>
+<span class="priority-2">NP</span>
+</td>
+<td>Possible null pointer dereference of ViewPager.mSetChildrenDrawingOrderEnabled in android.support.v4.view.ViewPager.setChildrenDrawingOrderEnabledCompat(boolean) on exception path</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N65898" style="display: none;">
+<a href="#NP_NULL_ON_SOME_PATH_EXCEPTION">Bug type NP_NULL_ON_SOME_PATH_EXCEPTION (click for details)</a>
+<br/>In class android.support.v4.view.ViewPager<br/>In method android.support.v4.view.ViewPager.setChildrenDrawingOrderEnabledCompat(boolean)<br/>Value contained in android.support.v4.view.ViewPager.mSetChildrenDrawingOrderEnabled<br/>Dereferenced at ViewPager.java:[line 669]<br/>Null value at ViewPager.java:[line 660]<br/>Known null at ViewPager.java:[line 664]<br/>Known null at ViewPager.java:[line 665]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N66750');">
+<td>
+<span class="priority-1">NP</span>
+</td>
+<td>Possible null pointer dereference of next in ch.blinkenlights.android.medialibrary.MediaScanner$MediaScanPlan.getNextStep()</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N66750" style="display: none;">
+<a href="#NP_NULL_ON_SOME_PATH">Bug type NP_NULL_ON_SOME_PATH (click for details)</a>
+<br/>In class ch.blinkenlights.android.medialibrary.MediaScanner$MediaScanPlan<br/>In method ch.blinkenlights.android.medialibrary.MediaScanner$MediaScanPlan.getNextStep()<br/>Value loaded from next<br/>Dereferenced at MediaScanner.java:[line 682]<br/>Known null at MediaScanner.java:[line 679]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N66007');">
+<td>
+<span class="priority-2">RCN</span>
+</td>
+<td>Nullcheck of views at line 2744 of value previously dereferenced in android.support.v4.view.ViewPager.addFocusables(ArrayList, int, int)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N66007" style="display: none;">
+<a href="#RCN_REDUNDANT_NULLCHECK_WOULD_HAVE_BEEN_A_NPE">Bug type RCN_REDUNDANT_NULLCHECK_WOULD_HAVE_BEEN_A_NPE (click for details)</a>
+<br/>In class android.support.v4.view.ViewPager<br/>In method android.support.v4.view.ViewPager.addFocusables(ArrayList, int, int)<br/>Value loaded from views<br/>At ViewPager.java:[line 2711]<br/>Redundant null check at ViewPager.java:[line 2744]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N66079');">
+<td>
+<span class="priority-2">RCN</span>
+</td>
+<td>Nullcheck of params at line 1330 of value previously dereferenced in android.support.v4.view.ViewPager.addView(View, int, ViewGroup$LayoutParams)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N66079" style="display: none;">
+<a href="#RCN_REDUNDANT_NULLCHECK_WOULD_HAVE_BEEN_A_NPE">Bug type RCN_REDUNDANT_NULLCHECK_WOULD_HAVE_BEEN_A_NPE (click for details)</a>
+<br/>In class android.support.v4.view.ViewPager<br/>In method android.support.v4.view.ViewPager.addView(View, int, ViewGroup$LayoutParams)<br/>Value loaded from params<br/>At ViewPager.java:[line 1328]<br/>Redundant null check at ViewPager.java:[line 1330]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N67667');">
+<td>
+<span class="priority-1">RE</span>
+</td>
+<td>File.separator used for regular expression in ch.blinkenlights.android.vanilla.FileSystemAdapter.&lt;static initializer for FileSystemAdapter&gt;()</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N67667" style="display: none;">
+<a href="#RE_CANT_USE_FILE_SEPARATOR_AS_REGULAR_EXPRESSION">Bug type RE_CANT_USE_FILE_SEPARATOR_AS_REGULAR_EXPRESSION (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.FileSystemAdapter<br/>In method ch.blinkenlights.android.vanilla.FileSystemAdapter.&lt;static initializer for FileSystemAdapter&gt;()<br/>Called method java.util.regex.Pattern.compile(String)<br/>At FileSystemAdapter.java:[line 56]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N67004');">
+<td>
+<span class="priority-1">RV</span>
+</td>
+<td>Bad attempt to compute absolute value of signed 32-bit hashcode in ch.blinkenlights.android.vanilla.CoverBitmap.generatePlaceholderCover(Context, int, int, String)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N67004" style="display: none;">
+<a href="#RV_ABSOLUTE_VALUE_OF_HASHCODE">Bug type RV_ABSOLUTE_VALUE_OF_HASHCODE (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.CoverBitmap<br/>In method ch.blinkenlights.android.vanilla.CoverBitmap.generatePlaceholderCover(Context, int, int, String)<br/>At CoverBitmap.java:[line 419]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N66310');">
+<td>
+<span class="priority-2">SA</span>
+</td>
+<td>Self assignment of field ViewPager$SavedState.loader in new android.support.v4.view.ViewPager$SavedState(Parcel)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N66310" style="display: none;">
+<a href="#SA_FIELD_SELF_ASSIGNMENT">Bug type SA_FIELD_SELF_ASSIGNMENT (click for details)</a>
+<br/>In class android.support.v4.view.ViewPager$SavedState<br/>In method new android.support.v4.view.ViewPager$SavedState(Parcel)<br/>Field android.support.v4.view.ViewPager$SavedState.loader<br/>At ViewPager.java:[line 1287]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N75716');">
+<td>
+<span class="priority-2">UwF</span>
+</td>
+<td>Unwritten field: com.mobeta.android.dslv.DragSortListView.mLiftAnimator</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N75716" style="display: none;">
+<a href="#UWF_UNWRITTEN_FIELD">Bug type UWF_UNWRITTEN_FIELD (click for details)</a>
+<br/>In class com.mobeta.android.dslv.DragSortListView<br/>Field com.mobeta.android.dslv.DragSortListView.mLiftAnimator<br/>At DragSortListView.java:[line 2300]</p>
+</td>
+</tr>
+</table>
+<h2>
+<a name="Warnings_EXPERIMENTAL">Experimental Warnings</a>
+</h2>
+<table class="warningtable" width="100%" cellspacing="0">
+<tr class="tableheader">
+<th align="left">Code</th>
+<th align="left">Warning</th>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N72018');">
+<td>
+<span class="priority-2">OBL</span>
+</td>
+<td>ch.blinkenlights.android.vanilla.VanillaMediaPlayer.setDataSource(String) may fail to clean up java.io.InputStream on checked exception</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N72018" style="display: none;">
+<a href="#OBL_UNSATISFIED_OBLIGATION_EXCEPTION_EDGE">Bug type OBL_UNSATISFIED_OBLIGATION_EXCEPTION_EDGE (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.VanillaMediaPlayer<br/>In method ch.blinkenlights.android.vanilla.VanillaMediaPlayer.setDataSource(String)<br/>Reference type java.io.InputStream<br/>1 instances of obligation remaining<br/>Obligation to clean up resource created at VanillaMediaPlayer.java:[line 73] is not discharged<br/>Path continues at VanillaMediaPlayer.java:[line 74]<br/>Remaining obligations: {InputStream x 1}</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N75930');">
+<td>
+<span class="priority-2">OBL</span>
+</td>
+<td>com.mobeta.android.dslv.DragSortListView$DragSortTracker.flush() may fail to clean up java.io.Writer on checked exception</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N75930" style="display: none;">
+<a href="#OBL_UNSATISFIED_OBLIGATION_EXCEPTION_EDGE">Bug type OBL_UNSATISFIED_OBLIGATION_EXCEPTION_EDGE (click for details)</a>
+<br/>In class com.mobeta.android.dslv.DragSortListView$DragSortTracker<br/>In method com.mobeta.android.dslv.DragSortListView$DragSortTracker.flush()<br/>Reference type java.io.Writer<br/>1 instances of obligation remaining<br/>Obligation to clean up resource created at DragSortListView.java:[line 3051] is not discharged<br/>Path continues at DragSortListView.java:[line 3053]<br/>Path continues at DragSortListView.java:[line 3060]<br/>Path continues at DragSortListView.java:[line 3063]<br/>Remaining obligations: {Writer x 1}</p>
+</td>
+</tr>
+</table>
+<h2>
+<a name="Warnings_I18N">Internationalization Warnings</a>
+</h2>
+<table class="warningtable" width="100%" cellspacing="0">
+<tr class="tableheader">
+<th align="left">Code</th>
+<th align="left">Warning</th>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N72508');">
+<td>
+<span class="priority-1">Dm</span>
+</td>
+<td>Found reliance on default encoding in ch.blinkenlights.bastp.Bastp.getTags(RandomAccessFile): new String(byte[])</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N72508" style="display: none;">
+<a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+<br/>In class ch.blinkenlights.bastp.Bastp<br/>In method ch.blinkenlights.bastp.Bastp.getTags(RandomAccessFile)<br/>Called method new String(byte[])<br/>At Bastp.java:[line 53]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N72646');">
+<td>
+<span class="priority-1">Dm</span>
+</td>
+<td>Found reliance on default encoding in ch.blinkenlights.bastp.Common.parse_vorbis_comment(RandomAccessFile, PageInfo$PageParser, long, long): new String(byte[])</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N72646" style="display: none;">
+<a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+<br/>In class ch.blinkenlights.bastp.Common<br/>In method ch.blinkenlights.bastp.Common.parse_vorbis_comment(RandomAccessFile, PageInfo$PageParser, long, long)<br/>Called method new String(byte[])<br/>At Common.java:[line 109]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N72995');">
+<td>
+<span class="priority-1">Dm</span>
+</td>
+<td>Found reliance on default encoding in ch.blinkenlights.bastp.ID3v2File.parse_v3_frames(RandomAccessFile, long, int): new String(byte[], int, int)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N72995" style="display: none;">
+<a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+<br/>In class ch.blinkenlights.bastp.ID3v2File<br/>In method ch.blinkenlights.bastp.ID3v2File.parse_v3_frames(RandomAccessFile, long, int)<br/>Called method new String(byte[], int, int)<br/>At ID3v2File.java:[line 81]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N73224');">
+<td>
+<span class="priority-1">Dm</span>
+</td>
+<td>Found reliance on default encoding in ch.blinkenlights.bastp.Mp4File.getTags(RandomAccessFile): new String(byte[])</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N73224" style="display: none;">
+<a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+<br/>In class ch.blinkenlights.bastp.Mp4File<br/>In method ch.blinkenlights.bastp.Mp4File.getTags(RandomAccessFile)<br/>Called method new String(byte[])<br/>At Mp4File.java:[line 87]<br/>Another occurrence at Mp4File.java:[line 136]<br/>Another occurrence at Mp4File.java:[line 145]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N73731');">
+<td>
+<span class="priority-1">Dm</span>
+</td>
+<td>Found reliance on default encoding in ch.blinkenlights.bastp.OggFile.parse_ogg_vorbis_comment(RandomAccessFile, long, long): new String(byte[], int, int)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N73731" style="display: none;">
+<a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+<br/>In class ch.blinkenlights.bastp.OggFile<br/>In method ch.blinkenlights.bastp.OggFile.parse_ogg_vorbis_comment(RandomAccessFile, long, long)<br/>Called method new String(byte[], int, int)<br/>At OggFile.java:[line 131]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N73800');">
+<td>
+<span class="priority-1">Dm</span>
+</td>
+<td>Found reliance on default encoding in ch.blinkenlights.bastp.OggFile.parse_stream_page(RandomAccessFile, long): new String(byte[], int, int)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N73800" style="display: none;">
+<a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+<br/>In class ch.blinkenlights.bastp.OggFile<br/>In method ch.blinkenlights.bastp.OggFile.parse_stream_page(RandomAccessFile, long)<br/>Called method new String(byte[], int, int)<br/>At OggFile.java:[line 89]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N74007');">
+<td>
+<span class="priority-1">Dm</span>
+</td>
+<td>Found reliance on default encoding in ch.blinkenlights.bastp.OpusFile.parse_opus_head(RandomAccessFile, long, long): new String(byte[], int, int)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N74007" style="display: none;">
+<a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+<br/>In class ch.blinkenlights.bastp.OpusFile<br/>In method ch.blinkenlights.bastp.OpusFile.parse_opus_head(RandomAccessFile, long, long)<br/>Called method new String(byte[], int, int)<br/>At OpusFile.java:[line 93]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N74076');">
+<td>
+<span class="priority-1">Dm</span>
+</td>
+<td>Found reliance on default encoding in ch.blinkenlights.bastp.OpusFile.parse_opus_vorbis_comment(RandomAccessFile, long, long): new String(byte[], int, int)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N74076" style="display: none;">
+<a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+<br/>In class ch.blinkenlights.bastp.OpusFile<br/>In method ch.blinkenlights.bastp.OpusFile.parse_opus_vorbis_comment(RandomAccessFile, long, long)<br/>Called method new String(byte[], int, int)<br/>At OpusFile.java:[line 121]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N75861');">
+<td>
+<span class="priority-1">Dm</span>
+</td>
+<td>Found reliance on default encoding in com.mobeta.android.dslv.DragSortListView$DragSortTracker.flush(): new java.io.FileWriter(File, boolean)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N75861" style="display: none;">
+<a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+<br/>In class com.mobeta.android.dslv.DragSortListView$DragSortTracker<br/>In method com.mobeta.android.dslv.DragSortListView$DragSortTracker.flush()<br/>Called method new java.io.FileWriter(File, boolean)<br/>At DragSortListView.java:[line 3051]</p>
+</td>
+</tr>
+</table>
+<h2>
+<a name="Warnings_MALICIOUS_CODE">Malicious code vulnerability Warnings</a>
+</h2>
+<table class="warningtable" width="100%" cellspacing="0">
+<tr class="tableheader">
+<th align="left">Code</th>
+<th align="left">Warning</th>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N69041');">
+<td>
+<span class="priority-2">EI</span>
+</td>
+<td>ch.blinkenlights.android.vanilla.MediaAdapter.getSortEntries() may expose internal representation by returning MediaAdapter.mSortEntries</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N69041" style="display: none;">
+<a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.MediaAdapter<br/>In method ch.blinkenlights.android.vanilla.MediaAdapter.getSortEntries()<br/>Field ch.blinkenlights.android.vanilla.MediaAdapter.mSortEntries<br/>At MediaAdapter.java:[line 554]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N71688');">
+<td>
+<span class="priority-2">EI</span>
+</td>
+<td>ch.blinkenlights.android.vanilla.TabOrderAdapter.getTabIds() may expose internal representation by returning TabOrderAdapter.mTabIds</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N71688" style="display: none;">
+<a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.TabOrderAdapter<br/>In method ch.blinkenlights.android.vanilla.TabOrderAdapter.getTabIds()<br/>Field ch.blinkenlights.android.vanilla.TabOrderAdapter.mTabIds<br/>At TabOrderAdapter.java:[line 68]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N67592');">
+<td>
+<span class="priority-2">EI2</span>
+</td>
+<td>ch.blinkenlights.android.vanilla.FileSystemAdapter.commitQuery(Object) may expose internal representation by storing an externally mutable object into FileSystemAdapter.mFiles</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N67592" style="display: none;">
+<a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.FileSystemAdapter<br/>In method ch.blinkenlights.android.vanilla.FileSystemAdapter.commitQuery(Object)<br/>Field ch.blinkenlights.android.vanilla.FileSystemAdapter.mFiles<br/>Local variable named data<br/>At FileSystemAdapter.java:[line 162]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N68893');">
+<td>
+<span class="priority-2">EI2</span>
+</td>
+<td>new ch.blinkenlights.android.vanilla.Limiter(int, String[], Object) may expose internal representation by storing an externally mutable object into Limiter.names</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N68893" style="display: none;">
+<a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.Limiter<br/>In method new ch.blinkenlights.android.vanilla.Limiter(int, String[], Object)<br/>Field ch.blinkenlights.android.vanilla.Limiter.names<br/>Local variable named names<br/>At Limiter.java:[line 61]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N70233');">
+<td>
+<span class="priority-2">EI2</span>
+</td>
+<td>new ch.blinkenlights.android.vanilla.QueryTask(String, String[], String, String[], String) may expose internal representation by storing an externally mutable object into QueryTask.projection</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N70233" style="display: none;">
+<a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.QueryTask<br/>In method new ch.blinkenlights.android.vanilla.QueryTask(String, String[], String, String[], String)<br/>Field ch.blinkenlights.android.vanilla.QueryTask.projection<br/>Local variable named projection<br/>At QueryTask.java:[line 59]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N70308');">
+<td>
+<span class="priority-2">EI2</span>
+</td>
+<td>new ch.blinkenlights.android.vanilla.QueryTask(String, String[], String, String[], String) may expose internal representation by storing an externally mutable object into QueryTask.selectionArgs</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N70308" style="display: none;">
+<a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.QueryTask<br/>In method new ch.blinkenlights.android.vanilla.QueryTask(String, String[], String, String[], String)<br/>Field ch.blinkenlights.android.vanilla.QueryTask.selectionArgs<br/>Local variable named selectionArgs<br/>At QueryTask.java:[line 61]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N71756');">
+<td>
+<span class="priority-2">EI2</span>
+</td>
+<td>ch.blinkenlights.android.vanilla.TabOrderAdapter.setTabIds(int[]) may expose internal representation by storing an externally mutable object into TabOrderAdapter.mTabIds</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N71756" style="display: none;">
+<a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.TabOrderAdapter<br/>In method ch.blinkenlights.android.vanilla.TabOrderAdapter.setTabIds(int[])<br/>Field ch.blinkenlights.android.vanilla.TabOrderAdapter.mTabIds<br/>Local variable named ids<br/>At TabOrderAdapter.java:[line 59]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N76196');">
+<td>
+<span class="priority-2">EI2</span>
+</td>
+<td>new com.mobeta.android.dslv.SimpleDragSortCursorAdapter(Context, int, Cursor, String[], int[]) may expose internal representation by storing an externally mutable object into SimpleDragSortCursorAdapter.mOriginalFrom</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N76196" style="display: none;">
+<a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+<br/>In class com.mobeta.android.dslv.SimpleDragSortCursorAdapter<br/>In method new com.mobeta.android.dslv.SimpleDragSortCursorAdapter(Context, int, Cursor, String[], int[])<br/>Field com.mobeta.android.dslv.SimpleDragSortCursorAdapter.mOriginalFrom<br/>Local variable named from<br/>At SimpleDragSortCursorAdapter.java:[line 84]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N76271');">
+<td>
+<span class="priority-2">EI2</span>
+</td>
+<td>new com.mobeta.android.dslv.SimpleDragSortCursorAdapter(Context, int, Cursor, String[], int[]) may expose internal representation by storing an externally mutable object into SimpleDragSortCursorAdapter.mTo</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N76271" style="display: none;">
+<a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+<br/>In class com.mobeta.android.dslv.SimpleDragSortCursorAdapter<br/>In method new com.mobeta.android.dslv.SimpleDragSortCursorAdapter(Context, int, Cursor, String[], int[])<br/>Field com.mobeta.android.dslv.SimpleDragSortCursorAdapter.mTo<br/>Local variable named to<br/>At SimpleDragSortCursorAdapter.java:[line 83]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N76346');">
+<td>
+<span class="priority-2">EI2</span>
+</td>
+<td>new com.mobeta.android.dslv.SimpleDragSortCursorAdapter(Context, int, Cursor, String[], int[], int) may expose internal representation by storing an externally mutable object into SimpleDragSortCursorAdapter.mOriginalFrom</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N76346" style="display: none;">
+<a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+<br/>In class com.mobeta.android.dslv.SimpleDragSortCursorAdapter<br/>In method new com.mobeta.android.dslv.SimpleDragSortCursorAdapter(Context, int, Cursor, String[], int[], int)<br/>Field com.mobeta.android.dslv.SimpleDragSortCursorAdapter.mOriginalFrom<br/>Local variable named from<br/>At SimpleDragSortCursorAdapter.java:[line 110]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N76421');">
+<td>
+<span class="priority-2">EI2</span>
+</td>
+<td>new com.mobeta.android.dslv.SimpleDragSortCursorAdapter(Context, int, Cursor, String[], int[], int) may expose internal representation by storing an externally mutable object into SimpleDragSortCursorAdapter.mTo</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N76421" style="display: none;">
+<a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+<br/>In class com.mobeta.android.dslv.SimpleDragSortCursorAdapter<br/>In method new com.mobeta.android.dslv.SimpleDragSortCursorAdapter(Context, int, Cursor, String[], int[], int)<br/>Field com.mobeta.android.dslv.SimpleDragSortCursorAdapter.mTo<br/>Local variable named to<br/>At SimpleDragSortCursorAdapter.java:[line 109]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N76496');">
+<td>
+<span class="priority-2">EI2</span>
+</td>
+<td>com.mobeta.android.dslv.SimpleDragSortCursorAdapter.changeCursorAndColumns(Cursor, String[], int[]) may expose internal representation by storing an externally mutable object into SimpleDragSortCursorAdapter.mOriginalFrom</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N76496" style="display: none;">
+<a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+<br/>In class com.mobeta.android.dslv.SimpleDragSortCursorAdapter<br/>In method com.mobeta.android.dslv.SimpleDragSortCursorAdapter.changeCursorAndColumns(Cursor, String[], int[])<br/>Field com.mobeta.android.dslv.SimpleDragSortCursorAdapter.mOriginalFrom<br/>Local variable named from<br/>At SimpleDragSortCursorAdapter.java:[line 365]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N76571');">
+<td>
+<span class="priority-2">EI2</span>
+</td>
+<td>com.mobeta.android.dslv.SimpleDragSortCursorAdapter.changeCursorAndColumns(Cursor, String[], int[]) may expose internal representation by storing an externally mutable object into SimpleDragSortCursorAdapter.mTo</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N76571" style="display: none;">
+<a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+<br/>In class com.mobeta.android.dslv.SimpleDragSortCursorAdapter<br/>In method com.mobeta.android.dslv.SimpleDragSortCursorAdapter.changeCursorAndColumns(Cursor, String[], int[])<br/>Field com.mobeta.android.dslv.SimpleDragSortCursorAdapter.mTo<br/>Local variable named to<br/>At SimpleDragSortCursorAdapter.java:[line 366]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N67112');">
+<td>
+<span class="priority-2">MS</span>
+</td>
+<td>ch.blinkenlights.android.vanilla.CoverCache.mCoverLoadMode should be package protected</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N67112" style="display: none;">
+<a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.CoverCache<br/>Field ch.blinkenlights.android.vanilla.CoverCache.mCoverLoadMode<br/>At CoverCache.java:[line 76]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N68648');">
+<td>
+<span class="priority-2">MS</span>
+</td>
+<td>ch.blinkenlights.android.vanilla.LibraryPagerAdapter.DEFAULT_ORDER should be package protected</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N68648" style="display: none;">
+<a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.LibraryPagerAdapter<br/>Field ch.blinkenlights.android.vanilla.LibraryPagerAdapter.DEFAULT_ORDER<br/>At LibraryPagerAdapter.java:[line 78]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N68700');">
+<td>
+<span class="priority-2">MS</span>
+</td>
+<td>ch.blinkenlights.android.vanilla.LibraryPagerAdapter.TITLES should be package protected</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N68700" style="display: none;">
+<a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.LibraryPagerAdapter<br/>Field ch.blinkenlights.android.vanilla.LibraryPagerAdapter.TITLES<br/>At LibraryPagerAdapter.java:[line 73]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N69652');">
+<td>
+<span class="priority-2">MS</span>
+</td>
+<td>ch.blinkenlights.android.vanilla.PlaybackService.sInstance should be package protected</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N69652" style="display: none;">
+<a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.PlaybackService<br/>Field ch.blinkenlights.android.vanilla.PlaybackService.sInstance<br/>In PlaybackService.java</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N70664');">
+<td>
+<span class="priority-2">MS</span>
+</td>
+<td>ch.blinkenlights.android.vanilla.Song.EMPTY_PLAYLIST_PROJECTION should be package protected</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N70664" style="display: none;">
+<a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.Song<br/>Field ch.blinkenlights.android.vanilla.Song.EMPTY_PLAYLIST_PROJECTION<br/>At Song.java:[line 67]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N70716');">
+<td>
+<span class="priority-2">MS</span>
+</td>
+<td>ch.blinkenlights.android.vanilla.Song.EMPTY_PROJECTION should be package protected</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N70716" style="display: none;">
+<a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.Song<br/>Field ch.blinkenlights.android.vanilla.Song.EMPTY_PROJECTION<br/>At Song.java:[line 51]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N70768');">
+<td>
+<span class="priority-2">MS</span>
+</td>
+<td>ch.blinkenlights.android.vanilla.Song.FILLED_PLAYLIST_PROJECTION should be package protected</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N70768" style="display: none;">
+<a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.Song<br/>Field ch.blinkenlights.android.vanilla.Song.FILLED_PLAYLIST_PROJECTION<br/>At Song.java:[line 71]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N70820');">
+<td>
+<span class="priority-2">MS</span>
+</td>
+<td>ch.blinkenlights.android.vanilla.Song.FILLED_PROJECTION should be package protected</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N70820" style="display: none;">
+<a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.Song<br/>Field ch.blinkenlights.android.vanilla.Song.FILLED_PROJECTION<br/>At Song.java:[line 55]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N71461');">
+<td>
+<span class="priority-2">MS</span>
+</td>
+<td>ch.blinkenlights.android.vanilla.SongTimeline.FINISH_ICONS should be package protected</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N71461" style="display: none;">
+<a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.SongTimeline<br/>Field ch.blinkenlights.android.vanilla.SongTimeline.FINISH_ICONS<br/>At SongTimeline.java:[line 90]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N71513');">
+<td>
+<span class="priority-2">MS</span>
+</td>
+<td>ch.blinkenlights.android.vanilla.SongTimeline.SHUFFLE_ICONS should be package protected</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N71513" style="display: none;">
+<a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.SongTimeline<br/>Field ch.blinkenlights.android.vanilla.SongTimeline.SHUFFLE_ICONS<br/>At SongTimeline.java:[line 185]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N74145');">
+<td>
+<span class="priority-2">MS</span>
+</td>
+<td>ch.blinkenlights.bastp.OpusFile.FORBIDDEN_TAGS should be package protected</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N74145" style="display: none;">
+<a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+<br/>In class ch.blinkenlights.bastp.OpusFile<br/>Field ch.blinkenlights.bastp.OpusFile.FORBIDDEN_TAGS<br/>At OpusFile.java:[line 27]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N74720');">
+<td>
+<span class="priority-2">MS</span>
+</td>
+<td>com.abk.banira.R$styleable.DragSortListView is a mutable array</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N74720" style="display: none;">
+<a href="#MS_MUTABLE_ARRAY">Bug type MS_MUTABLE_ARRAY (click for details)</a>
+<br/>In class com.abk.banira.R$styleable<br/>Field com.abk.banira.R$styleable.DragSortListView<br/>At R.java:[line 869]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N74772');">
+<td>
+<span class="priority-2">MS</span>
+</td>
+<td>com.abk.banira.R$styleable.SeekBarPreference is a mutable array</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N74772" style="display: none;">
+<a href="#MS_MUTABLE_ARRAY">Bug type MS_MUTABLE_ARRAY (click for details)</a>
+<br/>In class com.abk.banira.R$styleable<br/>Field com.abk.banira.R$styleable.SeekBarPreference<br/>At R.java:[line 1164]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N74824');">
+<td>
+<span class="priority-2">MS</span>
+</td>
+<td>com.abk.banira.R$styleable.SlidingViewPreferences is a mutable array</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N74824" style="display: none;">
+<a href="#MS_MUTABLE_ARRAY">Bug type MS_MUTABLE_ARRAY (click for details)</a>
+<br/>In class com.abk.banira.R$styleable<br/>Field com.abk.banira.R$styleable.SlidingViewPreferences<br/>At R.java:[line 1307]</p>
+</td>
+</tr>
+</table>
+<h2>
+<a name="Warnings_MT_CORRECTNESS">Multithreaded correctness Warnings</a>
+</h2>
+<table class="warningtable" width="100%" cellspacing="0">
+<tr class="tableheader">
+<th align="left">Code</th>
+<th align="left">Warning</th>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N66412');">
+<td>
+<span class="priority-2">DC</span>
+</td>
+<td>Possible doublecheck on ch.blinkenlights.android.medialibrary.MediaLibrary.sBackend in ch.blinkenlights.android.medialibrary.MediaLibrary.getBackend(Context)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N66412" style="display: none;">
+<a href="#DC_DOUBLECHECK">Bug type DC_DOUBLECHECK (click for details)</a>
+<br/>In class ch.blinkenlights.android.medialibrary.MediaLibrary<br/>In method ch.blinkenlights.android.medialibrary.MediaLibrary.getBackend(Context)<br/>On field ch.blinkenlights.android.medialibrary.MediaLibrary.sBackend<br/>At MediaLibrary.java:[lines 66-69]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N70872');">
+<td>
+<span class="priority-2">IS</span>
+</td>
+<td>Inconsistent synchronization of ch.blinkenlights.android.vanilla.SongTimeline.mShuffleMode; locked 84% of time</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N70872" style="display: none;">
+<a href="#IS2_INCONSISTENT_SYNC">Bug type IS2_INCONSISTENT_SYNC (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.SongTimeline<br/>Field ch.blinkenlights.android.vanilla.SongTimeline.mShuffleMode<br/>Synchronized 84% of the time<br/>Unsynchronized access at SongTimeline.java:[line 471]<br/>Unsynchronized access at SongTimeline.java:[line 450]<br/>Synchronized access at SongTimeline.java:[line 476]<br/>Synchronized access at SongTimeline.java:[line 532]<br/>Synchronized access at SongTimeline.java:[line 812]<br/>Synchronized access at SongTimeline.java:[line 813]<br/>Synchronized access at SongTimeline.java:[line 623]<br/>Synchronized access at SongTimeline.java:[line 394]<br/>Synchronized access at SongTimeline.java:[line 399]<br/>Synchronized access at SongTimeline.java:[line 400]<br/>Synchronized access at SongTimeline.java:[line 399]<br/>Synchronized access at SongTimeline.java:[line 431]<br/>Synchronized access at SongTimeline.java:[line 594]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N71062');">
+<td>
+<span class="priority-2">IS</span>
+</td>
+<td>Inconsistent synchronization of ch.blinkenlights.android.vanilla.SongTimeline.mSongs; locked 87% of time</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N71062" style="display: none;">
+<a href="#IS2_INCONSISTENT_SYNC">Bug type IS2_INCONSISTENT_SYNC (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.SongTimeline<br/>Field ch.blinkenlights.android.vanilla.SongTimeline.mSongs<br/>Synchronized 87% of the time<br/>Unsynchronized access at SongTimeline.java:[line 1004]<br/>Unsynchronized access at SongTimeline.java:[line 730]<br/>Unsynchronized access at SongTimeline.java:[line 1035]<br/>Unsynchronized access at SongTimeline.java:[line 566]<br/>Synchronized access at SongTimeline.java:[line 477]<br/>Synchronized access at SongTimeline.java:[line 480]<br/>Synchronized access at SongTimeline.java:[line 550]<br/>Synchronized access at SongTimeline.java:[line 531]<br/>Synchronized access at SongTimeline.java:[line 534]<br/>Synchronized access at SongTimeline.java:[line 886]<br/>Synchronized access at SongTimeline.java:[line 622]<br/>Synchronized access at SongTimeline.java:[line 632]<br/>Synchronized access at SongTimeline.java:[line 623]<br/>Synchronized access at SongTimeline.java:[line 624]<br/>Synchronized access at SongTimeline.java:[line 950]<br/>Synchronized access at SongTimeline.java:[line 910]<br/>Synchronized access at SongTimeline.java:[line 1018]<br/>Synchronized access at SongTimeline.java:[line 502]<br/>Synchronized access at SongTimeline.java:[line 504]<br/>Synchronized access at SongTimeline.java:[line 838]<br/>Synchronized access at SongTimeline.java:[line 392]<br/>Synchronized access at SongTimeline.java:[line 392]<br/>Synchronized access at SongTimeline.java:[line 388]<br/>Synchronized access at SongTimeline.java:[line 867]<br/>Synchronized access at SongTimeline.java:[line 414]<br/>Synchronized access at SongTimeline.java:[line 657]<br/>Synchronized access at SongTimeline.java:[line 658]<br/>Synchronized access at SongTimeline.java:[line 852]<br/>Synchronized access at SongTimeline.java:[line 853]<br/>Synchronized access at SongTimeline.java:[line 853]<br/>Synchronized access at SongTimeline.java:[line 975]<br/>Synchronized access at SongTimeline.java:[line 924]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N69583');">
+<td>
+<span class="priority-2">LI</span>
+</td>
+<td>Incorrect lazy initialization of static field ch.blinkenlights.android.vanilla.PlaybackService.sSettings in ch.blinkenlights.android.vanilla.PlaybackService.getSettings(Context)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N69583" style="display: none;">
+<a href="#LI_LAZY_INIT_STATIC">Bug type LI_LAZY_INIT_STATIC (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.PlaybackService<br/>In method ch.blinkenlights.android.vanilla.PlaybackService.getSettings(Context)<br/>On field ch.blinkenlights.android.vanilla.PlaybackService.sSettings<br/>At PlaybackService.java:[lines 808-809]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N69700');">
+<td>
+<span class="priority-2">NN</span>
+</td>
+<td>Naked notify in ch.blinkenlights.android.vanilla.PlaybackService.onCreate()</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N69700" style="display: none;">
+<a href="#NN_NAKED_NOTIFY">Bug type NN_NAKED_NOTIFY (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.PlaybackService<br/>In method ch.blinkenlights.android.vanilla.PlaybackService.onCreate()<br/>At PlaybackService.java:[line 504]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N70094');">
+<td>
+<span class="priority-2">UW</span>
+</td>
+<td>Unconditional wait in ch.blinkenlights.android.vanilla.PlaybackService.get(Context)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N70094" style="display: none;">
+<a href="#UW_UNCOND_WAIT">Bug type UW_UNCOND_WAIT (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.PlaybackService<br/>In method ch.blinkenlights.android.vanilla.PlaybackService.get(Context)<br/>At PlaybackService.java:[line 1893]</p>
+</td>
+</tr>
+</table>
+<h2>
+<a name="Warnings_PERFORMANCE">Performance Warnings</a>
+</h2>
+<table class="warningtable" width="100%" cellspacing="0">
+<tr class="tableheader">
+<th align="left">Code</th>
+<th align="left">Warning</th>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N68805');">
+<td>
+<span class="priority-2">SBSC</span>
+</td>
+<td>ch.blinkenlights.android.vanilla.LibraryPagerAdapter$AdaperPositionLruCache._k(LibraryAdapter) concatenates strings using + in a loop</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N68805" style="display: none;">
+<a href="#SBSC_USE_STRINGBUFFER_CONCATENATION">Bug type SBSC_USE_STRINGBUFFER_CONCATENATION (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.LibraryPagerAdapter$AdaperPositionLruCache<br/>In method ch.blinkenlights.android.vanilla.LibraryPagerAdapter$AdaperPositionLruCache._k(LibraryAdapter)<br/>At LibraryPagerAdapter.java:[line 918]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N73507');">
+<td>
+<span class="priority-2">SBSC</span>
+</td>
+<td>ch.blinkenlights.bastp.Mp4File.printDebugAtomPath(RandomAccessFile, Stack, String, int) concatenates strings using + in a loop</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N73507" style="display: none;">
+<a href="#SBSC_USE_STRINGBUFFER_CONCATENATION">Bug type SBSC_USE_STRINGBUFFER_CONCATENATION (click for details)</a>
+<br/>In class ch.blinkenlights.bastp.Mp4File<br/>In method ch.blinkenlights.bastp.Mp4File.printDebugAtomPath(RandomAccessFile, Stack, String, int)<br/>At Mp4File.java:[line 189]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N66823');">
+<td>
+<span class="priority-2">SIC</span>
+</td>
+<td>Should ch.blinkenlights.android.medialibrary.MediaScanner$MediaScanPlan be a _static_ inner class?</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N66823" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC">Bug type SIC_INNER_SHOULD_BE_STATIC (click for details)</a>
+<br/>In class ch.blinkenlights.android.medialibrary.MediaScanner$MediaScanPlan<br/>At MediaScanner.java:[lines 604-688]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N66858');">
+<td>
+<span class="priority-2">SIC</span>
+</td>
+<td>Should ch.blinkenlights.android.vanilla.BastpUtil$GainValues be a _static_ inner class?</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N66858" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC">Bug type SIC_INNER_SHOULD_BE_STATIC (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.BastpUtil$GainValues<br/>At BastpUtil.java:[line 33]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N66893');">
+<td>
+<span class="priority-2">SIC</span>
+</td>
+<td>Should ch.blinkenlights.android.vanilla.BastpUtil$RGLruCache be a _static_ inner class?</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N66893" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC">Bug type SIC_INNER_SHOULD_BE_STATIC (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.BastpUtil$RGLruCache<br/>At BastpUtil.java:[lines 42-44]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N68858');">
+<td>
+<span class="priority-2">SIC</span>
+</td>
+<td>Should ch.blinkenlights.android.vanilla.LibraryPagerAdapter$AdaperPositionLruCache be a _static_ inner class?</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N68858" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC">Bug type SIC_INNER_SHOULD_BE_STATIC (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.LibraryPagerAdapter$AdaperPositionLruCache<br/>At LibraryPagerAdapter.java:[lines 899-921]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N69109');">
+<td>
+<span class="priority-2">SIC</span>
+</td>
+<td>Should ch.blinkenlights.android.vanilla.MediaAdapter$SectionIndex be a _static_ inner class?</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N69109" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC">Bug type SIC_INNER_SHOULD_BE_STATIC (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.MediaAdapter$SectionIndex<br/>At MediaAdapter.java:[lines 653-666]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N70198');">
+<td>
+<span class="priority-2">SIC</span>
+</td>
+<td>Should ch.blinkenlights.android.vanilla.PlaylistDialog$Data be a _static_ inner class?</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N70198" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC">Bug type SIC_INNER_SHOULD_BE_STATIC (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.PlaylistDialog$Data<br/>At PlaylistDialog.java:[line 87]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N76110');">
+<td>
+<span class="priority-2">SIC</span>
+</td>
+<td>Should com.mobeta.android.dslv.DragSortListView$HeightCache be a _static_ inner class?</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N76110" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC">Bug type SIC_INNER_SHOULD_BE_STATIC (click for details)</a>
+<br/>In class com.mobeta.android.dslv.DragSortListView$HeightCache<br/>At DragSortListView.java:[lines 859-892]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N70147');">
+<td>
+<span class="priority-2">SS</span>
+</td>
+<td>Unread field: ch.blinkenlights.android.vanilla.PlaylistDialog.BUTTON_CREATE_PLAYLIST; should this field be static?</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N70147" style="display: none;">
+<a href="#SS_SHOULD_BE_STATIC">Bug type SS_SHOULD_BE_STATIC (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.PlaylistDialog<br/>Field ch.blinkenlights.android.vanilla.PlaylistDialog.BUTTON_CREATE_PLAYLIST<br/>At PlaylistDialog.java:[line 77]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N70509');">
+<td>
+<span class="priority-2">SS</span>
+</td>
+<td>Unread field: ch.blinkenlights.android.vanilla.SlidingView.ANIMATION_DURATION; should this field be static?</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N70509" style="display: none;">
+<a href="#SS_SHOULD_BE_STATIC">Bug type SS_SHOULD_BE_STATIC (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.SlidingView<br/>Field ch.blinkenlights.android.vanilla.SlidingView.ANIMATION_DURATION<br/>At SlidingView.java:[line 48]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N70560');">
+<td>
+<span class="priority-2">SS</span>
+</td>
+<td>Unread field: ch.blinkenlights.android.vanilla.SlidingView.MAX_PROGRESS; should this field be static?</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N70560" style="display: none;">
+<a href="#SS_SHOULD_BE_STATIC">Bug type SS_SHOULD_BE_STATIC (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.SlidingView<br/>Field ch.blinkenlights.android.vanilla.SlidingView.MAX_PROGRESS<br/>At SlidingView.java:[line 44]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N75408');">
+<td>
+<span class="priority-2">UPM</span>
+</td>
+<td>Private method com.mobeta.android.dslv.DragSortListView.adjustItem(int) is never called</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N75408" style="display: none;">
+<a href="#UPM_UNCALLED_PRIVATE_METHOD">Bug type UPM_UNCALLED_PRIVATE_METHOD (click for details)</a>
+<br/>In class com.mobeta.android.dslv.DragSortListView<br/>In method com.mobeta.android.dslv.DragSortListView.adjustItem(int)<br/>At DragSortListView.java:[lines 1874-1879]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N75461');">
+<td>
+<span class="priority-2">UrF</span>
+</td>
+<td>Unread field: com.mobeta.android.dslv.DragSortListView.mDragStartY</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N75461" style="display: none;">
+<a href="#URF_UNREAD_FIELD">Bug type URF_UNREAD_FIELD (click for details)</a>
+<br/>In class com.mobeta.android.dslv.DragSortListView<br/>Field com.mobeta.android.dslv.DragSortListView.mDragStartY<br/>At DragSortListView.java:[line 2270]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N75512');">
+<td>
+<span class="priority-2">UrF</span>
+</td>
+<td>Unread field: com.mobeta.android.dslv.DragSortListView.mFloatViewInvalidated</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N75512" style="display: none;">
+<a href="#URF_UNREAD_FIELD">Bug type URF_UNREAD_FIELD (click for details)</a>
+<br/>In class com.mobeta.android.dslv.DragSortListView<br/>Field com.mobeta.android.dslv.DragSortListView.mFloatViewInvalidated<br/>At DragSortListView.java:[line 2178]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N75563');">
+<td>
+<span class="priority-2">UrF</span>
+</td>
+<td>Unread field: com.mobeta.android.dslv.DragSortListView.mLastX</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N75563" style="display: none;">
+<a href="#URF_UNREAD_FIELD">Bug type URF_UNREAD_FIELD (click for details)</a>
+<br/>In class com.mobeta.android.dslv.DragSortListView<br/>Field com.mobeta.android.dslv.DragSortListView.mLastX<br/>At DragSortListView.java:[line 1679]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N75614');">
+<td>
+<span class="priority-2">UrF</span>
+</td>
+<td>Unread field: com.mobeta.android.dslv.DragSortListView.mOffsetX</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N75614" style="display: none;">
+<a href="#URF_UNREAD_FIELD">Bug type URF_UNREAD_FIELD (click for details)</a>
+<br/>In class com.mobeta.android.dslv.DragSortListView<br/>Field com.mobeta.android.dslv.DragSortListView.mOffsetX<br/>At DragSortListView.java:[line 1688]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N75665');">
+<td>
+<span class="priority-2">UrF</span>
+</td>
+<td>Unread field: com.mobeta.android.dslv.DragSortListView.mOffsetY</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N75665" style="display: none;">
+<a href="#URF_UNREAD_FIELD">Bug type URF_UNREAD_FIELD (click for details)</a>
+<br/>In class com.mobeta.android.dslv.DragSortListView<br/>Field com.mobeta.android.dslv.DragSortListView.mOffsetY<br/>At DragSortListView.java:[line 1689]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N76145');">
+<td>
+<span class="priority-2">UrF</span>
+</td>
+<td>Unread field: com.mobeta.android.dslv.DragSortListView$RemoveAnimator.srcPos</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N76145" style="display: none;">
+<a href="#URF_UNREAD_FIELD">Bug type URF_UNREAD_FIELD (click for details)</a>
+<br/>In class com.mobeta.android.dslv.DragSortListView$RemoveAnimator<br/>Field com.mobeta.android.dslv.DragSortListView$RemoveAnimator.srcPos<br/>At DragSortListView.java:[line 1326]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N75767');">
+<td>
+<span class="priority-2">UuF</span>
+</td>
+<td>Unused field: com.mobeta.android.dslv.DragSortListView$DragScroller.mFirstFooter</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N75767" style="display: none;">
+<a href="#UUF_UNUSED_FIELD">Bug type UUF_UNUSED_FIELD (click for details)</a>
+<br/>In class com.mobeta.android.dslv.DragSortListView$DragScroller<br/>Field com.mobeta.android.dslv.DragSortListView$DragScroller.mFirstFooter<br/>In DragSortListView.java</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N75814');">
+<td>
+<span class="priority-2">UuF</span>
+</td>
+<td>Unused field: com.mobeta.android.dslv.DragSortListView$DragScroller.mLastHeader</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N75814" style="display: none;">
+<a href="#UUF_UNUSED_FIELD">Bug type UUF_UNUSED_FIELD (click for details)</a>
+<br/>In class com.mobeta.android.dslv.DragSortListView$DragScroller<br/>Field com.mobeta.android.dslv.DragSortListView$DragScroller.mLastHeader<br/>In DragSortListView.java</p>
+</td>
+</tr>
+</table>
+<h2>
+<a name="Warnings_STYLE">Dodgy code Warnings</a>
+</h2>
+<table class="warningtable" width="100%" cellspacing="0">
+<tr class="tableheader">
+<th align="left">Code</th>
+<th align="left">Warning</th>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N66481');">
+<td>
+<span class="priority-2">DLS</span>
+</td>
+<td>Dead store to backend in ch.blinkenlights.android.medialibrary.MediaLibrary.abortLibraryScan(Context)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N66481" style="display: none;">
+<a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+<br/>In class ch.blinkenlights.android.medialibrary.MediaLibrary<br/>In method ch.blinkenlights.android.medialibrary.MediaLibrary.abortLibraryScan(Context)<br/>Local variable named backend<br/>At MediaLibrary.java:[line 108]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N66551');">
+<td>
+<span class="priority-2">DLS</span>
+</td>
+<td>Dead store to backend in ch.blinkenlights.android.medialibrary.MediaLibrary.describeScanProgress(Context)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N66551" style="display: none;">
+<a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+<br/>In class ch.blinkenlights.android.medialibrary.MediaLibrary<br/>In method ch.blinkenlights.android.medialibrary.MediaLibrary.describeScanProgress(Context)<br/>Local variable named backend<br/>At MediaLibrary.java:[line 119]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N66621');">
+<td>
+<span class="priority-2">DLS</span>
+</td>
+<td>Dead store to backend in ch.blinkenlights.android.medialibrary.MediaLibrary.startLibraryScan(Context, boolean, boolean, boolean)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N66621" style="display: none;">
+<a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+<br/>In class ch.blinkenlights.android.medialibrary.MediaLibrary<br/>In method ch.blinkenlights.android.medialibrary.MediaLibrary.startLibraryScan(Context, boolean, boolean, boolean)<br/>Local variable named backend<br/>At MediaLibrary.java:[line 87]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N68340');">
+<td>
+<span class="priority-2">DLS</span>
+</td>
+<td>Dead store to activity in ch.blinkenlights.android.vanilla.FullPlaybackActivity.onOptionsItemSelected(MenuItem)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N68340" style="display: none;">
+<a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.FullPlaybackActivity<br/>In method ch.blinkenlights.android.vanilla.FullPlaybackActivity.onOptionsItemSelected(MenuItem)<br/>Local variable named activity<br/>At FullPlaybackActivity.java:[line 364]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N68407');">
+<td>
+<span class="priority-2">DLS</span>
+</td>
+<td>Dead store to playbackService in ch.blinkenlights.android.vanilla.FullPlaybackActivity.onOptionsItemSelected(MenuItem)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N68407" style="display: none;">
+<a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.FullPlaybackActivity<br/>In method ch.blinkenlights.android.vanilla.FullPlaybackActivity.onOptionsItemSelected(MenuItem)<br/>Local variable named playbackService<br/>At FullPlaybackActivity.java:[line 363]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N68968');">
+<td>
+<span class="priority-2">DLS</span>
+</td>
+<td>Dead store to id in ch.blinkenlights.android.vanilla.MediaAdapter.onClick(View)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N68968" style="display: none;">
+<a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.MediaAdapter<br/>In method ch.blinkenlights.android.vanilla.MediaAdapter.onClick(View)<br/>Local variable named id<br/>At MediaAdapter.java:[line 611]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N70436');">
+<td>
+<span class="priority-2">DLS</span>
+</td>
+<td>Dead store to itemId in ch.blinkenlights.android.vanilla.ShowQueueFragment.onMenuItemClick(MenuItem)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N70436" style="display: none;">
+<a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.ShowQueueFragment<br/>In method ch.blinkenlights.android.vanilla.ShowQueueFragment.onMenuItemClick(MenuItem)<br/>Local variable named itemId<br/>At ShowQueueFragment.java:[line 123]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N72922');">
+<td>
+<span class="priority-2">DLS</span>
+</td>
+<td>Dead store to tags in ch.blinkenlights.bastp.ID3v2File.getTags(RandomAccessFile)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N72922" style="display: none;">
+<a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+<br/>In class ch.blinkenlights.bastp.ID3v2File<br/>In method ch.blinkenlights.bastp.ID3v2File.getTags(RandomAccessFile)<br/>Local variable named tags<br/>At ID3v2File.java:[line 37]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N75053');">
+<td>
+<span class="priority-2">DLS</span>
+</td>
+<td>Dead store to divHeight in com.mobeta.android.dslv.DragSortListView.calcItemHeight(int, int)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N75053" style="display: none;">
+<a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+<br/>In class com.mobeta.android.dslv.DragSortListView<br/>In method com.mobeta.android.dslv.DragSortListView.calcItemHeight(int, int)<br/>Local variable named divHeight<br/>At DragSortListView.java:[line 2011]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N75126');">
+<td>
+<span class="priority-2">DLS</span>
+</td>
+<td>Dead store to action in com.mobeta.android.dslv.DragSortListView.onDragTouchEvent(MotionEvent)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N75126" style="display: none;">
+<a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+<br/>In class com.mobeta.android.dslv.DragSortListView<br/>In method com.mobeta.android.dslv.DragSortListView.onDragTouchEvent(MotionEvent)<br/>Local variable named action<br/>At DragSortListView.java:[line 2154]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N66691');">
+<td>
+<span class="priority-2">DMI</span>
+</td>
+<td>Hard coded reference to an absolute pathname in ch.blinkenlights.android.medialibrary.MediaLibrary.discoverMediaPaths()</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N66691" style="display: none;">
+<a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+<br/>In class ch.blinkenlights.android.medialibrary.MediaLibrary<br/>In method ch.blinkenlights.android.medialibrary.MediaLibrary.discoverMediaPaths()<br/>File name /storage/sdcard1<br/>At MediaLibrary.java:[line 405]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N67533');">
+<td>
+<span class="priority-2">DMI</span>
+</td>
+<td>Hard coded reference to an absolute pathname in ch.blinkenlights.android.vanilla.FileSystemAdapter.query()</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N67533" style="display: none;">
+<a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.FileSystemAdapter<br/>In method ch.blinkenlights.android.vanilla.FileSystemAdapter.query()<br/>File name /<br/>At FileSystemAdapter.java:[line 147]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N75196');">
+<td>
+<span class="priority-1">FE</span>
+</td>
+<td>Test for floating point equality in com.mobeta.android.dslv.DragSortListView.updatePositions()</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N75196" style="display: none;">
+<a href="#FE_FLOATING_POINT_EQUALITY">Bug type FE_FLOATING_POINT_EQUALITY (click for details)</a>
+<br/>In class com.mobeta.android.dslv.DragSortListView<br/>In method com.mobeta.android.dslv.DragSortListView.updatePositions()<br/>At DragSortListView.java:[line 1107]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N66928');">
+<td>
+<span class="priority-2">ICAST</span>
+</td>
+<td>Integral division result cast to double or float in ch.blinkenlights.android.vanilla.CoverBitmap.generateDefaultCover(Context, int, int)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N66928" style="display: none;">
+<a href="#ICAST_IDIV_CAST_TO_DOUBLE">Bug type ICAST_IDIV_CAST_TO_DOUBLE (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.CoverBitmap<br/>In method ch.blinkenlights.android.vanilla.CoverBitmap.generateDefaultCover(Context, int, int)<br/>At CoverBitmap.java:[line 372]<br/>Another occurrence at CoverBitmap.java:[line 378]<br/>Another occurrence at CoverBitmap.java:[line 384]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N67058');">
+<td>
+<span class="priority-2">ICAST</span>
+</td>
+<td>Result of integer multiplication cast to long in ch.blinkenlights.android.vanilla.CoverCache.getCoverFromSong(Song, int)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N67058" style="display: none;">
+<a href="#ICAST_INTEGER_MULTIPLY_CAST_TO_LONG">Bug type ICAST_INTEGER_MULTIPLY_CAST_TO_LONG (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.CoverCache<br/>In method ch.blinkenlights.android.vanilla.CoverCache.getCoverFromSong(Song, int)<br/>At CoverCache.java:[line 106]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N67345');">
+<td>
+<span class="priority-2">ICAST</span>
+</td>
+<td>Integral division result cast to double or float in ch.blinkenlights.android.vanilla.CoverView.onDraw(Canvas)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N67345" style="display: none;">
+<a href="#ICAST_IDIV_CAST_TO_DOUBLE">Bug type ICAST_IDIV_CAST_TO_DOUBLE (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.CoverView<br/>In method ch.blinkenlights.android.vanilla.CoverView.onDraw(Canvas)<br/>At CoverView.java:[line 219]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N67218');">
+<td>
+<span class="priority-2">NP</span>
+</td>
+<td>Possible null pointer dereference in ch.blinkenlights.android.vanilla.CoverCache$BitmapDiskCache.createBitmap(Song, long) due to return value of called method</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N67218" style="display: none;">
+<a href="#NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE">Bug type NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.CoverCache$BitmapDiskCache<br/>In method ch.blinkenlights.android.vanilla.CoverCache$BitmapDiskCache.createBitmap(Song, long)<br/>Value loaded from ?<br/>Dereferenced at CoverCache.java:[line 412]<br/>Known null at CoverCache.java:[line 412]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N69144');">
+<td>
+<span class="priority-2">RCN</span>
+</td>
+<td>Redundant nullcheck of duration, which is known to be non-null in ch.blinkenlights.android.vanilla.MediaUtils.getCursorForFileQuery(String)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N69144" style="display: none;">
+<a href="#RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE">Bug type RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.MediaUtils<br/>In method ch.blinkenlights.android.vanilla.MediaUtils.getCursorForFileQuery(String)<br/>Value loaded from duration<br/>Return value of ch.blinkenlights.android.medialibrary.MediaMetadataExtractor.getFirst(String) of type String<br/>Redundant null check at MediaUtils.java:[line 558]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N67291');">
+<td>
+<span class="priority-2">REC</span>
+</td>
+<td>Exception is caught when Exception is not thrown in ch.blinkenlights.android.vanilla.CoverCache$BitmapDiskCache.createBitmap(Song, long)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N67291" style="display: none;">
+<a href="#REC_CATCH_EXCEPTION">Bug type REC_CATCH_EXCEPTION (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.CoverCache$BitmapDiskCache<br/>In method ch.blinkenlights.android.vanilla.CoverCache$BitmapDiskCache.createBitmap(Song, long)<br/>At CoverCache.java:[line 482]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N69222');">
+<td>
+<span class="priority-2">REC</span>
+</td>
+<td>Exception is caught when Exception is not thrown in ch.blinkenlights.android.vanilla.MirrorLinkMediaBrowserService$2.doInBackground(Void[])</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N69222" style="display: none;">
+<a href="#REC_CATCH_EXCEPTION">Bug type REC_CATCH_EXCEPTION (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.MirrorLinkMediaBrowserService$2<br/>In method ch.blinkenlights.android.vanilla.MirrorLinkMediaBrowserService$2.doInBackground(Void[])<br/>At MirrorLinkMediaBrowserService.java:[line 378]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N73315');">
+<td>
+<span class="priority-2">REC</span>
+</td>
+<td>Exception is caught when Exception is not thrown in ch.blinkenlights.bastp.Mp4File.getTags(RandomAccessFile)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N73315" style="display: none;">
+<a href="#REC_CATCH_EXCEPTION">Bug type REC_CATCH_EXCEPTION (click for details)</a>
+<br/>In class ch.blinkenlights.bastp.Mp4File<br/>In method ch.blinkenlights.bastp.Mp4File.getTags(RandomAccessFile)<br/>At Mp4File.java:[line 163]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N66151');">
+<td>
+<span class="priority-2">SF</span>
+</td>
+<td>Switch statement found in android.support.v4.view.ViewPager.executeKeyEvent(KeyEvent) where default case is missing</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N66151" style="display: none;">
+<a href="#SF_SWITCH_NO_DEFAULT">Bug type SF_SWITCH_NO_DEFAULT (click for details)</a>
+<br/>In class android.support.v4.view.ViewPager<br/>In method android.support.v4.view.ViewPager.executeKeyEvent(KeyEvent)<br/>At ViewPager.java:[lines 2575-2589]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N66204');">
+<td>
+<span class="priority-2">SF</span>
+</td>
+<td>Switch statement found in android.support.v4.view.ViewPager.onInterceptTouchEvent(MotionEvent) where default case is missing</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N66204" style="display: none;">
+<a href="#SF_SWITCH_NO_DEFAULT">Bug type SF_SWITCH_NO_DEFAULT (click for details)</a>
+<br/>In class android.support.v4.view.ViewPager<br/>In method android.support.v4.view.ViewPager.onInterceptTouchEvent(MotionEvent)<br/>At ViewPager.java:[lines 1897-1988]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N66257');">
+<td>
+<span class="priority-2">SF</span>
+</td>
+<td>Switch statement found in android.support.v4.view.ViewPager.onTouchEvent(MotionEvent) where default case is missing</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N66257" style="display: none;">
+<a href="#SF_SWITCH_NO_DEFAULT">Bug type SF_SWITCH_NO_DEFAULT (click for details)</a>
+<br/>In class android.support.v4.view.ViewPager<br/>In method android.support.v4.view.ViewPager.onTouchEvent(MotionEvent)<br/>At ViewPager.java:[lines 2032-2118]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N68474');">
+<td>
+<span class="priority-2">SF</span>
+</td>
+<td>Switch statement found in ch.blinkenlights.android.vanilla.FullPlaybackActivity.onCreate(Bundle) where one case falls through to the next case</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N68474" style="display: none;">
+<a href="#SF_SWITCH_FALLTHROUGH">Bug type SF_SWITCH_FALLTHROUGH (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.FullPlaybackActivity<br/>In method ch.blinkenlights.android.vanilla.FullPlaybackActivity.onCreate(Bundle)<br/>At FullPlaybackActivity.java:[lines 130-133]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N68595');">
+<td>
+<span class="priority-2">SF</span>
+</td>
+<td>Switch statement found in ch.blinkenlights.android.vanilla.LibraryActivity.onKeyUp(int, KeyEvent) where default case is missing</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N68595" style="display: none;">
+<a href="#SF_SWITCH_NO_DEFAULT">Bug type SF_SWITCH_NO_DEFAULT (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.LibraryActivity<br/>In method ch.blinkenlights.android.vanilla.LibraryActivity.onKeyUp(int, KeyEvent)<br/>At LibraryActivity.java:[lines 361-379]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N68752');">
+<td>
+<span class="priority-2">SF</span>
+</td>
+<td>Switch statement found in ch.blinkenlights.android.vanilla.LibraryPagerAdapter.computeExpansions() where default case is missing</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N68752" style="display: none;">
+<a href="#SF_SWITCH_NO_DEFAULT">Bug type SF_SWITCH_NO_DEFAULT (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.LibraryPagerAdapter<br/>In method ch.blinkenlights.android.vanilla.LibraryPagerAdapter.computeExpansions()<br/>At LibraryPagerAdapter.java:[lines 277-288]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N69276');">
+<td>
+<span class="priority-2">SF</span>
+</td>
+<td>Switch statement found in ch.blinkenlights.android.vanilla.MirrorLinkMediaBrowserService$2.doInBackground(Void[]) where default case is missing</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N69276" style="display: none;">
+<a href="#SF_SWITCH_NO_DEFAULT">Bug type SF_SWITCH_NO_DEFAULT (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.MirrorLinkMediaBrowserService$2<br/>In method ch.blinkenlights.android.vanilla.MirrorLinkMediaBrowserService$2.doInBackground(Void[])<br/>At MirrorLinkMediaBrowserService.java:[lines 354-373]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N69530');">
+<td>
+<span class="priority-2">SF</span>
+</td>
+<td>Switch statement found in ch.blinkenlights.android.vanilla.PlaybackActivity.onClick(View) where default case is missing</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N69530" style="display: none;">
+<a href="#SF_SWITCH_NO_DEFAULT">Bug type SF_SWITCH_NO_DEFAULT (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.PlaybackActivity<br/>In method ch.blinkenlights.android.vanilla.PlaybackActivity.onClick(View)<br/>At PlaybackActivity.java:[lines 203-217]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N69753');">
+<td>
+<span class="priority-2">SF</span>
+</td>
+<td>Switch statement found in ch.blinkenlights.android.vanilla.PlaybackService.createNotificationAction(SharedPreferences) where one case falls through to the next case</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N69753" style="display: none;">
+<a href="#SF_SWITCH_FALLTHROUGH">Bug type SF_SWITCH_FALLTHROUGH (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.PlaybackService<br/>In method ch.blinkenlights.android.vanilla.PlaybackService.createNotificationAction(SharedPreferences)<br/>At PlaybackService.java:[lines 2024-2027]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N69807');">
+<td>
+<span class="priority-2">SF</span>
+</td>
+<td>Switch statement found in ch.blinkenlights.android.vanilla.PlaybackService.onAudioFocusChange(int) where default case is missing</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N69807" style="display: none;">
+<a href="#SF_SWITCH_NO_DEFAULT">Bug type SF_SWITCH_NO_DEFAULT (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.PlaybackService<br/>In method ch.blinkenlights.android.vanilla.PlaybackService.onAudioFocusChange(int)<br/>At PlaybackService.java:[lines 2128-2131]<br/>Another occurrence at PlaybackService.java:[lines 2135-2161]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N70383');">
+<td>
+<span class="priority-2">SF</span>
+</td>
+<td>Switch statement found in ch.blinkenlights.android.vanilla.ReadaheadThread.handleMessage(Message) where default case is missing</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N70383" style="display: none;">
+<a href="#SF_SWITCH_NO_DEFAULT">Bug type SF_SWITCH_NO_DEFAULT (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.ReadaheadThread<br/>In method ch.blinkenlights.android.vanilla.ReadaheadThread.handleMessage(Message)<br/>At ReadaheadThread.java:[lines 89-130]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N71635');">
+<td>
+<span class="priority-2">SF</span>
+</td>
+<td>Switch statement found in ch.blinkenlights.android.vanilla.TabOrderActivity.onClick(View) where default case is missing</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N71635" style="display: none;">
+<a href="#SF_SWITCH_NO_DEFAULT">Bug type SF_SWITCH_NO_DEFAULT (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.TabOrderActivity<br/>In method ch.blinkenlights.android.vanilla.TabOrderActivity.onClick(View)<br/>At TabOrderActivity.java:[lines 85-90]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N71831');">
+<td>
+<span class="priority-2">SF</span>
+</td>
+<td>Switch statement found in ch.blinkenlights.android.vanilla.VanillaImageButton.updateImageTint(int) where default case is missing</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N71831" style="display: none;">
+<a href="#SF_SWITCH_NO_DEFAULT">Bug type SF_SWITCH_NO_DEFAULT (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.VanillaImageButton<br/>In method ch.blinkenlights.android.vanilla.VanillaImageButton.updateImageTint(int)<br/>At VanillaImageButton.java:[lines 62-69]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N74946');">
+<td>
+<span class="priority-2">SF</span>
+</td>
+<td>Switch statement found in com.mobeta.android.dslv.DragSortController.onTouch(View, MotionEvent) where one case falls through to the next case</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N74946" style="display: none;">
+<a href="#SF_SWITCH_FALLTHROUGH">Bug type SF_SWITCH_FALLTHROUGH (click for details)</a>
+<br/>In class com.mobeta.android.dslv.DragSortController<br/>In method com.mobeta.android.dslv.DragSortController.onTouch(View, MotionEvent)<br/>At DragSortController.java:[lines 259-263]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N75000');">
+<td>
+<span class="priority-2">SF</span>
+</td>
+<td>Switch statement found in com.mobeta.android.dslv.DragSortController.onTouch(View, MotionEvent) where default case is missing</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N75000" style="display: none;">
+<a href="#SF_SWITCH_NO_DEFAULT">Bug type SF_SWITCH_NO_DEFAULT (click for details)</a>
+<br/>In class com.mobeta.android.dslv.DragSortController<br/>In method com.mobeta.android.dslv.DragSortController.onTouch(View, MotionEvent)<br/>At DragSortController.java:[lines 249-264]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N75249');">
+<td>
+<span class="priority-2">SF</span>
+</td>
+<td>Switch statement found in com.mobeta.android.dslv.DragSortListView.onDragTouchEvent(MotionEvent) where default case is missing</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N75249" style="display: none;">
+<a href="#SF_SWITCH_NO_DEFAULT">Bug type SF_SWITCH_NO_DEFAULT (click for details)</a>
+<br/>In class com.mobeta.android.dslv.DragSortListView<br/>In method com.mobeta.android.dslv.DragSortListView.onDragTouchEvent(MotionEvent)<br/>At DragSortListView.java:[lines 2156-2171]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N75302');">
+<td>
+<span class="priority-2">SF</span>
+</td>
+<td>Switch statement found in com.mobeta.android.dslv.DragSortListView.removeItem(int, float) where default case is missing</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N75302" style="display: none;">
+<a href="#SF_SWITCH_NO_DEFAULT">Bug type SF_SWITCH_NO_DEFAULT (click for details)</a>
+<br/>In class com.mobeta.android.dslv.DragSortListView<br/>In method com.mobeta.android.dslv.DragSortListView.removeItem(int, float)<br/>At DragSortListView.java:[lines 1434-1439]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N75355');">
+<td>
+<span class="priority-2">SF</span>
+</td>
+<td>Switch statement found in com.mobeta.android.dslv.DragSortListView.startDrag(int, View, int, int, int) where default case is missing</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N75355" style="display: none;">
+<a href="#SF_SWITCH_NO_DEFAULT">Bug type SF_SWITCH_NO_DEFAULT (click for details)</a>
+<br/>In class com.mobeta.android.dslv.DragSortListView<br/>In method com.mobeta.android.dslv.DragSortListView.startDrag(int, View, int, int, int)<br/>At DragSortListView.java:[lines 2289-2294]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N67399');">
+<td>
+<span class="priority-2">ST</span>
+</td>
+<td>Write to static field ch.blinkenlights.android.vanilla.CoverView.sDensity from instance method new ch.blinkenlights.android.vanilla.CoverView(Context, AttributeSet)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N67399" style="display: none;">
+<a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.CoverView<br/>In method new ch.blinkenlights.android.vanilla.CoverView(Context, AttributeSet)<br/>Field ch.blinkenlights.android.vanilla.CoverView.sDensity<br/>At CoverView.java:[line 165]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N67466');">
+<td>
+<span class="priority-2">ST</span>
+</td>
+<td>Write to static field ch.blinkenlights.android.vanilla.CoverView.sSnapVelocity from instance method new ch.blinkenlights.android.vanilla.CoverView(Context, AttributeSet)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N67466" style="display: none;">
+<a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.CoverView<br/>In method new ch.blinkenlights.android.vanilla.CoverView(Context, AttributeSet)<br/>Field ch.blinkenlights.android.vanilla.CoverView.sSnapVelocity<br/>At CoverView.java:[line 164]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N67737');">
+<td>
+<span class="priority-1">ST</span>
+</td>
+<td>Write to static field ch.blinkenlights.android.vanilla.FourLongWidget.sEnabled from instance method ch.blinkenlights.android.vanilla.FourLongWidget.onDisabled(Context)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N67737" style="display: none;">
+<a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.FourLongWidget<br/>In method ch.blinkenlights.android.vanilla.FourLongWidget.onDisabled(Context)<br/>Field ch.blinkenlights.android.vanilla.FourLongWidget.sEnabled<br/>At FourLongWidget.java:[line 53]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N67804');">
+<td>
+<span class="priority-1">ST</span>
+</td>
+<td>Write to static field ch.blinkenlights.android.vanilla.FourLongWidget.sEnabled from instance method ch.blinkenlights.android.vanilla.FourLongWidget.onEnabled(Context)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N67804" style="display: none;">
+<a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.FourLongWidget<br/>In method ch.blinkenlights.android.vanilla.FourLongWidget.onEnabled(Context)<br/>Field ch.blinkenlights.android.vanilla.FourLongWidget.sEnabled<br/>At FourLongWidget.java:[line 47]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N67871');">
+<td>
+<span class="priority-2">ST</span>
+</td>
+<td>Write to static field ch.blinkenlights.android.vanilla.FourLongWidget.sEnabled from instance method ch.blinkenlights.android.vanilla.FourLongWidget.onUpdate(Context, AppWidgetManager, int[])</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N67871" style="display: none;">
+<a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.FourLongWidget<br/>In method ch.blinkenlights.android.vanilla.FourLongWidget.onUpdate(Context, AppWidgetManager, int[])<br/>Field ch.blinkenlights.android.vanilla.FourLongWidget.sEnabled<br/>At FourLongWidget.java:[line 68]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N67938');">
+<td>
+<span class="priority-1">ST</span>
+</td>
+<td>Write to static field ch.blinkenlights.android.vanilla.FourSquareWidget.sEnabled from instance method ch.blinkenlights.android.vanilla.FourSquareWidget.onDisabled(Context)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N67938" style="display: none;">
+<a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.FourSquareWidget<br/>In method ch.blinkenlights.android.vanilla.FourSquareWidget.onDisabled(Context)<br/>Field ch.blinkenlights.android.vanilla.FourSquareWidget.sEnabled<br/>At FourSquareWidget.java:[line 53]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N68005');">
+<td>
+<span class="priority-1">ST</span>
+</td>
+<td>Write to static field ch.blinkenlights.android.vanilla.FourSquareWidget.sEnabled from instance method ch.blinkenlights.android.vanilla.FourSquareWidget.onEnabled(Context)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N68005" style="display: none;">
+<a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.FourSquareWidget<br/>In method ch.blinkenlights.android.vanilla.FourSquareWidget.onEnabled(Context)<br/>Field ch.blinkenlights.android.vanilla.FourSquareWidget.sEnabled<br/>At FourSquareWidget.java:[line 47]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N68072');">
+<td>
+<span class="priority-2">ST</span>
+</td>
+<td>Write to static field ch.blinkenlights.android.vanilla.FourSquareWidget.sEnabled from instance method ch.blinkenlights.android.vanilla.FourSquareWidget.onUpdate(Context, AppWidgetManager, int[])</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N68072" style="display: none;">
+<a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.FourSquareWidget<br/>In method ch.blinkenlights.android.vanilla.FourSquareWidget.onUpdate(Context, AppWidgetManager, int[])<br/>Field ch.blinkenlights.android.vanilla.FourSquareWidget.sEnabled<br/>At FourSquareWidget.java:[line 68]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N68139');">
+<td>
+<span class="priority-1">ST</span>
+</td>
+<td>Write to static field ch.blinkenlights.android.vanilla.FourWhiteWidget.sEnabled from instance method ch.blinkenlights.android.vanilla.FourWhiteWidget.onDisabled(Context)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N68139" style="display: none;">
+<a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.FourWhiteWidget<br/>In method ch.blinkenlights.android.vanilla.FourWhiteWidget.onDisabled(Context)<br/>Field ch.blinkenlights.android.vanilla.FourWhiteWidget.sEnabled<br/>At FourWhiteWidget.java:[line 54]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N68206');">
+<td>
+<span class="priority-1">ST</span>
+</td>
+<td>Write to static field ch.blinkenlights.android.vanilla.FourWhiteWidget.sEnabled from instance method ch.blinkenlights.android.vanilla.FourWhiteWidget.onEnabled(Context)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N68206" style="display: none;">
+<a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.FourWhiteWidget<br/>In method ch.blinkenlights.android.vanilla.FourWhiteWidget.onEnabled(Context)<br/>Field ch.blinkenlights.android.vanilla.FourWhiteWidget.sEnabled<br/>At FourWhiteWidget.java:[line 48]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N68273');">
+<td>
+<span class="priority-2">ST</span>
+</td>
+<td>Write to static field ch.blinkenlights.android.vanilla.FourWhiteWidget.sEnabled from instance method ch.blinkenlights.android.vanilla.FourWhiteWidget.onUpdate(Context, AppWidgetManager, int[])</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N68273" style="display: none;">
+<a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.FourWhiteWidget<br/>In method ch.blinkenlights.android.vanilla.FourWhiteWidget.onUpdate(Context, AppWidgetManager, int[])<br/>Field ch.blinkenlights.android.vanilla.FourWhiteWidget.sEnabled<br/>At FourWhiteWidget.java:[line 69]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N68528');">
+<td>
+<span class="priority-2">ST</span>
+</td>
+<td>Write to static field ch.blinkenlights.android.vanilla.LazyCoverView.sFallbackBitmap from instance method new ch.blinkenlights.android.vanilla.LazyCoverView(Context, AttributeSet)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N68528" style="display: none;">
+<a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.LazyCoverView<br/>In method new ch.blinkenlights.android.vanilla.LazyCoverView(Context, AttributeSet)<br/>Field ch.blinkenlights.android.vanilla.LazyCoverView.sFallbackBitmap<br/>At LazyCoverView.java:[line 109]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N69329');">
+<td>
+<span class="priority-1">ST</span>
+</td>
+<td>Write to static field ch.blinkenlights.android.vanilla.OneCellWidget.sEnabled from instance method ch.blinkenlights.android.vanilla.OneCellWidget.onDisabled(Context)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N69329" style="display: none;">
+<a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.OneCellWidget<br/>In method ch.blinkenlights.android.vanilla.OneCellWidget.onDisabled(Context)<br/>Field ch.blinkenlights.android.vanilla.OneCellWidget.sEnabled<br/>At OneCellWidget.java:[line 53]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N69396');">
+<td>
+<span class="priority-1">ST</span>
+</td>
+<td>Write to static field ch.blinkenlights.android.vanilla.OneCellWidget.sEnabled from instance method ch.blinkenlights.android.vanilla.OneCellWidget.onEnabled(Context)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N69396" style="display: none;">
+<a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.OneCellWidget<br/>In method ch.blinkenlights.android.vanilla.OneCellWidget.onEnabled(Context)<br/>Field ch.blinkenlights.android.vanilla.OneCellWidget.sEnabled<br/>At OneCellWidget.java:[line 47]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N69463');">
+<td>
+<span class="priority-2">ST</span>
+</td>
+<td>Write to static field ch.blinkenlights.android.vanilla.OneCellWidget.sEnabled from instance method ch.blinkenlights.android.vanilla.OneCellWidget.onUpdate(Context, AppWidgetManager, int[])</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N69463" style="display: none;">
+<a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.OneCellWidget<br/>In method ch.blinkenlights.android.vanilla.OneCellWidget.onUpdate(Context, AppWidgetManager, int[])<br/>Field ch.blinkenlights.android.vanilla.OneCellWidget.sEnabled<br/>At OneCellWidget.java:[line 68]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N69871');">
+<td>
+<span class="priority-1">ST</span>
+</td>
+<td>Write to static field ch.blinkenlights.android.vanilla.PlaybackService.sInstance from instance method ch.blinkenlights.android.vanilla.PlaybackService.onDestroy()</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N69871" style="display: none;">
+<a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.PlaybackService<br/>In method ch.blinkenlights.android.vanilla.PlaybackService.onDestroy()<br/>Field ch.blinkenlights.android.vanilla.PlaybackService.sInstance<br/>At PlaybackService.java:[line 580]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N69938');">
+<td>
+<span class="priority-2">ST</span>
+</td>
+<td>Write to static field ch.blinkenlights.android.vanilla.CoverCache.mCoverLoadMode from instance method ch.blinkenlights.android.vanilla.PlaybackService.onCreate()</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N69938" style="display: none;">
+<a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.PlaybackService<br/>In method ch.blinkenlights.android.vanilla.PlaybackService.onCreate()<br/>Field ch.blinkenlights.android.vanilla.CoverCache.mCoverLoadMode<br/>At PlaybackService.java:[line 456]<br/>Another occurrence at PlaybackService.java:[line 457]<br/>Another occurrence at PlaybackService.java:[line 458]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N70027');">
+<td>
+<span class="priority-2">ST</span>
+</td>
+<td>Write to static field ch.blinkenlights.android.vanilla.PlaybackService.sInstance from instance method ch.blinkenlights.android.vanilla.PlaybackService.onCreate()</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N70027" style="display: none;">
+<a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.PlaybackService<br/>In method ch.blinkenlights.android.vanilla.PlaybackService.onCreate()<br/>Field ch.blinkenlights.android.vanilla.PlaybackService.sInstance<br/>At PlaybackService.java:[line 502]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N71884');">
+<td>
+<span class="priority-1">ST</span>
+</td>
+<td>Write to static field ch.blinkenlights.android.vanilla.VanillaImageButton.mActiveTint from instance method new ch.blinkenlights.android.vanilla.VanillaImageButton(Context, AttributeSet, int)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N71884" style="display: none;">
+<a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.VanillaImageButton<br/>In method new ch.blinkenlights.android.vanilla.VanillaImageButton(Context, AttributeSet, int)<br/>Field ch.blinkenlights.android.vanilla.VanillaImageButton.mActiveTint<br/>At VanillaImageButton.java:[line 49]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N71951');">
+<td>
+<span class="priority-1">ST</span>
+</td>
+<td>Write to static field ch.blinkenlights.android.vanilla.VanillaImageButton.mNormalTint from instance method new ch.blinkenlights.android.vanilla.VanillaImageButton(Context, AttributeSet, int)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N71951" style="display: none;">
+<a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.VanillaImageButton<br/>In method new ch.blinkenlights.android.vanilla.VanillaImageButton(Context, AttributeSet, int)<br/>Field ch.blinkenlights.android.vanilla.VanillaImageButton.mNormalTint<br/>At VanillaImageButton.java:[line 48]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N72106');">
+<td>
+<span class="priority-1">ST</span>
+</td>
+<td>Write to static field ch.blinkenlights.android.vanilla.WidgetD.sEnabled from instance method ch.blinkenlights.android.vanilla.WidgetD.onDisabled(Context)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N72106" style="display: none;">
+<a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.WidgetD<br/>In method ch.blinkenlights.android.vanilla.WidgetD.onDisabled(Context)<br/>Field ch.blinkenlights.android.vanilla.WidgetD.sEnabled<br/>At WidgetD.java:[line 53]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N72173');">
+<td>
+<span class="priority-1">ST</span>
+</td>
+<td>Write to static field ch.blinkenlights.android.vanilla.WidgetD.sEnabled from instance method ch.blinkenlights.android.vanilla.WidgetD.onEnabled(Context)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N72173" style="display: none;">
+<a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.WidgetD<br/>In method ch.blinkenlights.android.vanilla.WidgetD.onEnabled(Context)<br/>Field ch.blinkenlights.android.vanilla.WidgetD.sEnabled<br/>At WidgetD.java:[line 47]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N72240');">
+<td>
+<span class="priority-2">ST</span>
+</td>
+<td>Write to static field ch.blinkenlights.android.vanilla.WidgetD.sEnabled from instance method ch.blinkenlights.android.vanilla.WidgetD.onUpdate(Context, AppWidgetManager, int[])</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N72240" style="display: none;">
+<a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.WidgetD<br/>In method ch.blinkenlights.android.vanilla.WidgetD.onUpdate(Context, AppWidgetManager, int[])<br/>Field ch.blinkenlights.android.vanilla.WidgetD.sEnabled<br/>At WidgetD.java:[line 68]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N72307');">
+<td>
+<span class="priority-1">ST</span>
+</td>
+<td>Write to static field ch.blinkenlights.android.vanilla.WidgetE.sEnabled from instance method ch.blinkenlights.android.vanilla.WidgetE.onDisabled(Context)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N72307" style="display: none;">
+<a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.WidgetE<br/>In method ch.blinkenlights.android.vanilla.WidgetE.onDisabled(Context)<br/>Field ch.blinkenlights.android.vanilla.WidgetE.sEnabled<br/>At WidgetE.java:[line 51]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N72374');">
+<td>
+<span class="priority-1">ST</span>
+</td>
+<td>Write to static field ch.blinkenlights.android.vanilla.WidgetE.sEnabled from instance method ch.blinkenlights.android.vanilla.WidgetE.onEnabled(Context)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N72374" style="display: none;">
+<a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.WidgetE<br/>In method ch.blinkenlights.android.vanilla.WidgetE.onEnabled(Context)<br/>Field ch.blinkenlights.android.vanilla.WidgetE.sEnabled<br/>At WidgetE.java:[line 45]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N72441');">
+<td>
+<span class="priority-2">ST</span>
+</td>
+<td>Write to static field ch.blinkenlights.android.vanilla.WidgetE.sEnabled from instance method ch.blinkenlights.android.vanilla.WidgetE.onUpdate(Context, AppWidgetManager, int[])</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N72441" style="display: none;">
+<a href="#ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">Bug type ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD (click for details)</a>
+<br/>In class ch.blinkenlights.android.vanilla.WidgetE<br/>In method ch.blinkenlights.android.vanilla.WidgetE.onUpdate(Context, AppWidgetManager, int[])<br/>Field ch.blinkenlights.android.vanilla.WidgetE.sEnabled<br/>At WidgetE.java:[line 66]</p>
+</td>
+</tr>
+</table>
+<h1>
+<a name="Details">Details</a>
+</h1>
+<h2>
+<a name="DC_DOUBLECHECK">DC_DOUBLECHECK: Possible double check of field</a>
+</h2>
+
+  <p> This method may contain an instance of double-checked locking.&nbsp;
+  This idiom is not correct according to the semantics of the Java memory
+  model.&nbsp; For more information, see the web page
+  <a href="http://www.cs.umd.edu/~pugh/java/memoryModel/DoubleCheckedLocking.html"
+  >http://www.cs.umd.edu/~pugh/java/memoryModel/DoubleCheckedLocking.html</a>.</p>
+
+    
+<h2>
+<a name="DLS_DEAD_LOCAL_STORE">DLS_DEAD_LOCAL_STORE: Dead store to local variable</a>
+</h2>
+
+<p>
+This instruction assigns a value to a local variable,
+but the value is not read or used in any subsequent instruction.
+Often, this indicates an error, because the value computed is never
+used.
+</p>
+<p>
+Note that Sun's javac compiler often generates dead stores for
+final local variables.  Because FindBugs is a bytecode-based tool,
+there is no easy way to eliminate these false positives.
+</p>
+
+    
+<h2>
+<a name="DM_DEFAULT_ENCODING">DM_DEFAULT_ENCODING: Reliance on default encoding</a>
+</h2>
+
+<p> Found a call to a method which will perform a byte to String (or String to byte) conversion, and will assume that the default platform encoding is suitable. This will cause the application behaviour to vary between platforms. Use an alternative API and specify a charset name or Charset object explicitly.  </p>
+
+      
+<h2>
+<a name="DMI_HARDCODED_ABSOLUTE_FILENAME">DMI_HARDCODED_ABSOLUTE_FILENAME: Code contains a hard coded reference to an absolute pathname</a>
+</h2>
+
+<p>This code constructs a File object using a hard coded to an absolute pathname
+(e.g., <code>new File("/home/dannyc/workspace/j2ee/src/share/com/sun/enterprise/deployment");</code>
+</p>
+
+    
+<h2>
+<a name="EI_EXPOSE_REP">EI_EXPOSE_REP: May expose internal representation by returning reference to mutable object</a>
+</h2>
+
+  <p> Returning a reference to a mutable object value stored in one of the object's fields
+  exposes the internal representation of the object.&nbsp;
+   If instances
+   are accessed by untrusted code, and unchecked changes to
+   the mutable object would compromise security or other
+   important properties, you will need to do something different.
+  Returning a new copy of the object is better approach in many situations.</p>
+
+    
+<h2>
+<a name="EI_EXPOSE_REP2">EI_EXPOSE_REP2: May expose internal representation by incorporating reference to mutable object</a>
+</h2>
+
+  <p> This code stores a reference to an externally mutable object into the
+  internal representation of the object.&nbsp;
+   If instances
+   are accessed by untrusted code, and unchecked changes to
+   the mutable object would compromise security or other
+   important properties, you will need to do something different.
+  Storing a copy of the object is better approach in many situations.</p>
+
+    
+<h2>
+<a name="EQ_COMPARETO_USE_OBJECT_EQUALS">EQ_COMPARETO_USE_OBJECT_EQUALS: Class defines compareTo(...) and uses Object.equals()</a>
+</h2>
+
+  <p> This class defines a <code>compareTo(...)</code> method but inherits its
+  <code>equals()</code> method from <code>java.lang.Object</code>.
+    Generally, the value of compareTo should return zero if and only if
+    equals returns true. If this is violated, weird and unpredictable
+    failures will occur in classes such as PriorityQueue.
+    In Java 5 the PriorityQueue.remove method uses the compareTo method,
+    while in Java 6 it uses the equals method.</p>
+
+<p>From the JavaDoc for the compareTo method in the Comparable interface:
+<blockquote>
+It is strongly recommended, but not strictly required that <code>(x.compareTo(y)==0) == (x.equals(y))</code>.
+Generally speaking, any class that implements the Comparable interface and violates this condition
+should clearly indicate this fact. The recommended language
+is "Note: this class has a natural ordering that is inconsistent with equals."
+</blockquote></p>
+
+    
+<h2>
+<a name="FE_FLOATING_POINT_EQUALITY">FE_FLOATING_POINT_EQUALITY: Test for floating point equality</a>
+</h2>
+   
+    <p>
+    This operation compares two floating point values for equality.
+    Because floating point calculations may involve rounding,
+   calculated float and double values may not be accurate.
+    For values that must be precise, such as monetary values,
+   consider using a fixed-precision type such as BigDecimal.
+    For values that need not be precise, consider comparing for equality
+    within some range, for example:
+    <code>if ( Math.abs(x - y) &lt; .0000001 )</code>.
+   See the Java Language Specification, section 4.2.4.
+    </p>
+    
+     
+<h2>
+<a name="ICAST_IDIV_CAST_TO_DOUBLE">ICAST_IDIV_CAST_TO_DOUBLE: Integral division result cast to double or float</a>
+</h2>
+
+<p>
+This code casts the result of an integral division (e.g., int or long division)
+operation to double or
+float.
+Doing division on integers truncates the result
+to the integer value closest to zero.  The fact that the result
+was cast to double suggests that this precision should have been retained.
+What was probably meant was to cast one or both of the operands to
+double <em>before</em> performing the division.  Here is an example:
+</p>
+<blockquote>
+<pre>
+int x = 2;
+int y = 5;
+// Wrong: yields result 0.0
+double value1 =  x / y;
+
+// Right: yields result 0.4
+double value2 =  x / (double) y;
+</pre>
+</blockquote>
+
+    
+<h2>
+<a name="ICAST_INT_CAST_TO_FLOAT_PASSED_TO_ROUND">ICAST_INT_CAST_TO_FLOAT_PASSED_TO_ROUND: int value cast to float and then passed to Math.round</a>
+</h2>
+
+<p>
+This code converts an int value to a float precision
+floating point number and then
+passing the result to the Math.round() function, which returns the int/long closest
+to the argument. This operation should always be a no-op,
+since the converting an integer to a float should give a number with no fractional part.
+It is likely that the operation that generated the value to be passed
+to Math.round was intended to be performed using
+floating point arithmetic.
+</p>
+
+
+    
+<h2>
+<a name="ICAST_INTEGER_MULTIPLY_CAST_TO_LONG">ICAST_INTEGER_MULTIPLY_CAST_TO_LONG: Result of integer multiplication cast to long</a>
+</h2>
+
+<p>
+This code performs integer multiply and then converts the result to a long,
+as in:</p>
+<pre>
+    long convertDaysToMilliseconds(int days) { return 1000*3600*24*days; }
+</pre>
+<p>
+If the multiplication is done using long arithmetic, you can avoid
+the possibility that the result will overflow. For example, you
+could fix the above code to:</p>
+<pre>
+    long convertDaysToMilliseconds(int days) { return 1000L*3600*24*days; }
+</pre>
+or
+<pre>
+    static final long MILLISECONDS_PER_DAY = 24L*3600*1000;
+    long convertDaysToMilliseconds(int days) { return days * MILLISECONDS_PER_DAY; }
+</pre>
+
+    
+<h2>
+<a name="IS2_INCONSISTENT_SYNC">IS2_INCONSISTENT_SYNC: Inconsistent synchronization</a>
+</h2>
+
+  <p> The fields of this class appear to be accessed inconsistently with respect
+  to synchronization.&nbsp; This bug report indicates that the bug pattern detector
+  judged that
+  </p>
+  <ul>
+  <li> The class contains a mix of locked and unlocked accesses,</li>
+  <li> The class is <b>not</b> annotated as javax.annotation.concurrent.NotThreadSafe,</li>
+  <li> At least one locked access was performed by one of the class's own methods, and</li>
+  <li> The number of unsynchronized field accesses (reads and writes) was no more than
+       one third of all accesses, with writes being weighed twice as high as reads</li>
+  </ul>
+
+  <p> A typical bug matching this bug pattern is forgetting to synchronize
+  one of the methods in a class that is intended to be thread-safe.</p>
+
+  <p> You can select the nodes labeled "Unsynchronized access" to show the
+  code locations where the detector believed that a field was accessed
+  without synchronization.</p>
+
+  <p> Note that there are various sources of inaccuracy in this detector;
+  for example, the detector cannot statically detect all situations in which
+  a lock is held.&nbsp; Also, even when the detector is accurate in
+  distinguishing locked vs. unlocked accesses, the code in question may still
+  be correct.</p>
+
+
+    
+<h2>
+<a name="LI_LAZY_INIT_STATIC">LI_LAZY_INIT_STATIC: Incorrect lazy initialization of static field</a>
+</h2>
+
+<p> This method contains an unsynchronized lazy initialization of a non-volatile static field.
+Because the compiler or processor may reorder instructions,
+threads are not guaranteed to see a completely initialized object,
+<em>if the method can be called by multiple threads</em>.
+You can make the field volatile to correct the problem.
+For more information, see the
+<a href="http://www.cs.umd.edu/~pugh/java/memoryModel/">Java Memory Model web site</a>.
+</p>
+
+    
+<h2>
+<a name="MS_MUTABLE_ARRAY">MS_MUTABLE_ARRAY: Field is a mutable array</a>
+</h2>
+
+<p> A final static field references an array
+   and can be accessed by malicious code or
+        by accident from another package.
+   This code can freely modify the contents of the array.</p>
+
+    
+<h2>
+<a name="MS_PKGPROTECT">MS_PKGPROTECT: Field should be package protected</a>
+</h2>
+
+  <p> A mutable static field could be changed by malicious code or
+   by accident.
+   The field could be made package protected to avoid
+   this vulnerability.</p>
+
+    
+<h2>
+<a name="NM_CLASS_NAMING_CONVENTION">NM_CLASS_NAMING_CONVENTION: Class names should start with an upper case letter</a>
+</h2>
+
+  <p> Class names should be nouns, in mixed case with the first letter of each internal word capitalized. Try to keep your class names simple and descriptive. Use whole words-avoid acronyms and abbreviations (unless the abbreviation is much more widely used than the long form, such as URL or HTML).
+</p>
+
+    
+<h2>
+<a name="NN_NAKED_NOTIFY">NN_NAKED_NOTIFY: Naked notify</a>
+</h2>
+
+  <p> A call to <code>notify()</code> or <code>notifyAll()</code>
+  was made without any (apparent) accompanying
+  modification to mutable object state.&nbsp; In general, calling a notify
+  method on a monitor is done because some condition another thread is
+  waiting for has become true.&nbsp; However, for the condition to be meaningful,
+  it must involve a heap object that is visible to both threads.</p>
+
+  <p> This bug does not necessarily indicate an error, since the change to
+  mutable object state may have taken place in a method which then called
+  the method containing the notification.</p>
+
+    
+<h2>
+<a name="NP_NULL_ON_SOME_PATH">NP_NULL_ON_SOME_PATH: Possible null pointer dereference</a>
+</h2>
+
+<p> There is a branch of statement that, <em>if executed,</em>  guarantees that
+a null value will be dereferenced, which
+would generate a <code>NullPointerException</code> when the code is executed.
+Of course, the problem might be that the branch or statement is infeasible and that
+the null pointer exception can't ever be executed; deciding that is beyond the ability of FindBugs.
+</p>
+
+    
+<h2>
+<a name="NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE">NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE: Possible null pointer dereference due to return value of called method</a>
+</h2>
+      
+<p> The return value from a method is dereferenced without a null check,
+and the return value of that method is one that should generally be checked
+for null.  This may lead to a <code>NullPointerException</code> when the code is executed.
+</p>
+      
+   
+<h2>
+<a name="NP_NULL_ON_SOME_PATH_EXCEPTION">NP_NULL_ON_SOME_PATH_EXCEPTION: Possible null pointer dereference in method on exception path</a>
+</h2>
+
+<p> A reference value which is null on some exception control path is
+dereferenced here.&nbsp; This may lead to a <code>NullPointerException</code>
+when the code is executed.&nbsp;
+Note that because FindBugs currently does not prune infeasible exception paths,
+this may be a false warning.</p>
+
+<p> Also note that FindBugs considers the default case of a switch statement to
+be an exception path, since the default case is often infeasible.</p>
+
+    
+<h2>
+<a name="OBL_UNSATISFIED_OBLIGATION_EXCEPTION_EDGE">OBL_UNSATISFIED_OBLIGATION_EXCEPTION_EDGE: Method may fail to clean up stream or resource on checked exception</a>
+</h2>
+          
+          <p>
+          This method may fail to clean up (close, dispose of) a stream,
+          database object, or other
+          resource requiring an explicit cleanup operation.
+          </p>
+
+          <p>
+          In general, if a method opens a stream or other resource,
+          the method should use a try/finally block to ensure that
+          the stream or resource is cleaned up before the method
+          returns.
+          </p>
+
+          <p>
+          This bug pattern is essentially the same as the
+          OS_OPEN_STREAM and ODR_OPEN_DATABASE_RESOURCE
+          bug patterns, but is based on a different
+          (and hopefully better) static analysis technique.
+          We are interested is getting feedback about the
+          usefulness of this bug pattern.
+          To send feedback, either:
+          </p>
+          <ul>
+            <li>send email to findbugs@cs.umd.edu</li>
+            <li>file a bug report: <a href="http://findbugs.sourceforge.net/reportingBugs.html">http://findbugs.sourceforge.net/reportingBugs.html</a></li>
+          </ul>
+
+          <p>
+          In particular,
+          the false-positive suppression heuristics for this
+          bug pattern have not been extensively tuned, so
+          reports about false positives are helpful to us.
+          </p>
+
+          <p>
+          See Weimer and Necula, <i>Finding and Preventing Run-Time Error Handling Mistakes</i>, for
+          a description of the analysis technique.
+          </p>
+          
+      
+<h2>
+<a name="RCN_REDUNDANT_NULLCHECK_WOULD_HAVE_BEEN_A_NPE">RCN_REDUNDANT_NULLCHECK_WOULD_HAVE_BEEN_A_NPE: Nullcheck of value previously dereferenced</a>
+</h2>
+
+<p> A value is checked here to see whether it is null, but this value can't
+be null because it was previously dereferenced and if it were null a null pointer
+exception would have occurred at the earlier dereference.
+Essentially, this code and the previous dereference
+disagree as to whether this value is allowed to be null. Either the check is redundant
+or the previous dereference is erroneous.</p>
+
+    
+<h2>
+<a name="RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE">RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE: Redundant nullcheck of value known to be non-null</a>
+</h2>
+
+<p> This method contains a redundant check of a known non-null value against
+the constant null.</p>
+
+    
+<h2>
+<a name="RE_CANT_USE_FILE_SEPARATOR_AS_REGULAR_EXPRESSION">RE_CANT_USE_FILE_SEPARATOR_AS_REGULAR_EXPRESSION: File.separator used for regular expression</a>
+</h2>
+
+<p>
+The code here uses <code>File.separator</code>
+where a regular expression is required. This will fail on Windows
+platforms, where the <code>File.separator</code> is a backslash, which is interpreted in a
+regular expression as an escape character. Amoung other options, you can just use
+<code>File.separatorChar=='\\' ? "\\\\" : File.separator</code> instead of
+<code>File.separator</code>
+
+</p>
+
+    
+<h2>
+<a name="REC_CATCH_EXCEPTION">REC_CATCH_EXCEPTION: Exception is caught when Exception is not thrown</a>
+</h2>
+  
+  <p>
+  This method uses a try-catch block that catches Exception objects, but Exception is not
+  thrown within the try block, and RuntimeException is not explicitly caught.  It is a common bug pattern to
+  say try { ... } catch (Exception e) { something } as a shorthand for catching a number of types of exception
+  each of whose catch blocks is identical, but this construct also accidentally catches RuntimeException as well,
+  masking potential bugs.
+  </p>
+  <p>A better approach is to either explicitly catch the specific exceptions that are thrown,
+  or to explicitly catch RuntimeException exception, rethrow it, and then catch all non-Runtime Exceptions, as shown below:</p>
+  <pre>
+  try {
+    ...
+  } catch (RuntimeException e) {
+    throw e;
+  } catch (Exception e) {
+    ... deal with all non-runtime exceptions ...
+  }</pre>
+  
+     
+<h2>
+<a name="RR_NOT_CHECKED">RR_NOT_CHECKED: Method ignores results of InputStream.read()</a>
+</h2>
+
+  <p> This method ignores the return value of one of the variants of
+  <code>java.io.InputStream.read()</code> which can return multiple bytes.&nbsp;
+  If the return value is not checked, the caller will not be able to correctly
+  handle the case where fewer bytes were read than the caller requested.&nbsp;
+  This is a particularly insidious kind of bug, because in many programs,
+  reads from input streams usually do read the full amount of data requested,
+  causing the program to fail only sporadically.</p>
+
+    
+<h2>
+<a name="SR_NOT_CHECKED">SR_NOT_CHECKED: Method ignores results of InputStream.skip()</a>
+</h2>
+
+  <p> This method ignores the return value of
+  <code>java.io.InputStream.skip()</code> which can skip multiple bytes.&nbsp;
+  If the return value is not checked, the caller will not be able to correctly
+  handle the case where fewer bytes were skipped than the caller requested.&nbsp;
+  This is a particularly insidious kind of bug, because in many programs,
+  skips from input streams usually do skip the full amount of data requested,
+  causing the program to fail only sporadically. With Buffered streams, however,
+  skip() will only skip data in the buffer, and will routinely fail to skip the
+  requested number of bytes.</p>
+
+    
+<h2>
+<a name="RV_ABSOLUTE_VALUE_OF_HASHCODE">RV_ABSOLUTE_VALUE_OF_HASHCODE: Bad attempt to compute absolute value of signed 32-bit hashcode </a>
+</h2>
+
+<p> This code generates a hashcode and then computes
+the absolute value of that hashcode.  If the hashcode
+is <code>Integer.MIN_VALUE</code>, then the result will be negative as well (since
+<code>Math.abs(Integer.MIN_VALUE) == Integer.MIN_VALUE</code>).
+</p>
+<p>One out of 2^32 strings have a hashCode of Integer.MIN_VALUE,
+including "polygenelubricants" "GydZG_" and ""DESIGNING WORKHOUSES".
+</p>
+
+    
+<h2>
+<a name="RV_RETURN_VALUE_IGNORED_BAD_PRACTICE">RV_RETURN_VALUE_IGNORED_BAD_PRACTICE: Method ignores exceptional return value</a>
+</h2>
+
+   <p> This method returns a value that is not checked. The return value should be checked
+since it can indicate an unusual or unexpected function execution. For
+example, the <code>File.delete()</code> method returns false
+if the file could not be successfully deleted (rather than
+throwing an Exception).
+If you don't check the result, you won't notice if the method invocation
+signals unexpected behavior by returning an atypical return value.
+</p>
+
+    
+<h2>
+<a name="SA_FIELD_SELF_ASSIGNMENT">SA_FIELD_SELF_ASSIGNMENT: Self assignment of field</a>
+</h2>
+
+<p> This method contains a self assignment of a field; e.g.
+</p>
+<pre>
+  int x;
+  public void foo() {
+    x = x;
+  }
+</pre>
+<p>Such assignments are useless, and may indicate a logic error or typo.</p>
+
+    
+<h2>
+<a name="SBSC_USE_STRINGBUFFER_CONCATENATION">SBSC_USE_STRINGBUFFER_CONCATENATION: Method concatenates strings using + in a loop</a>
+</h2>
+
+<p> The method seems to be building a String using concatenation in a loop.
+In each iteration, the String is converted to a StringBuffer/StringBuilder,
+   appended to, and converted back to a String.
+   This can lead to a cost quadratic in the number of iterations,
+   as the growing string is recopied in each iteration. </p>
+
+<p>Better performance can be obtained by using
+a StringBuffer (or StringBuilder in Java 1.5) explicitly.</p>
+
+<p> For example:</p>
+<pre>
+  // This is bad
+  String s = "";
+  for (int i = 0; i &lt; field.length; ++i) {
+    s = s + field[i];
+  }
+
+  // This is better
+  StringBuffer buf = new StringBuffer();
+  for (int i = 0; i &lt; field.length; ++i) {
+    buf.append(field[i]);
+  }
+  String s = buf.toString();
+</pre>
+
+    
+<h2>
+<a name="SE_COMPARATOR_SHOULD_BE_SERIALIZABLE">SE_COMPARATOR_SHOULD_BE_SERIALIZABLE: Comparator doesn't implement Serializable</a>
+</h2>
+
+  <p> This class implements the <code>Comparator</code> interface. You
+should consider whether or not it should also implement the <code>Serializable</code>
+interface. If a comparator is used to construct an ordered collection
+such as a <code>TreeMap</code>, then the <code>TreeMap</code>
+will be serializable only if the comparator is also serializable.
+As most comparators have little or no state, making them serializable
+is generally easy and good defensive programming.
+</p>
+
+    
+<h2>
+<a name="SF_SWITCH_NO_DEFAULT">SF_SWITCH_NO_DEFAULT: Switch statement found where default case is missing</a>
+</h2>
+
+  <p> This method contains a switch statement where default case is missing.
+  Usually you need to provide a default case.</p>
+  <p>Because the analysis only looks at the generated bytecode, this warning can be incorrect triggered if
+the default case is at the end of the switch statement and the switch statement doesn't contain break statements for other
+cases.
+
+    
+<h2>
+<a name="SF_SWITCH_FALLTHROUGH">SF_SWITCH_FALLTHROUGH: Switch statement found where one case falls through to the next case</a>
+</h2>
+
+  <p> This method contains a switch statement where one case branch will fall through to the next case.
+  Usually you need to end this case with a break or return.</p>
+
+    
+<h2>
+<a name="SIC_INNER_SHOULD_BE_STATIC">SIC_INNER_SHOULD_BE_STATIC: Should be a static inner class</a>
+</h2>
+
+  <p> This class is an inner class, but does not use its embedded reference
+  to the object which created it.&nbsp; This reference makes the instances
+  of the class larger, and may keep the reference to the creator object
+  alive longer than necessary.&nbsp; If possible, the class should be
+   made static.
+</p>
+
+    
+<h2>
+<a name="SS_SHOULD_BE_STATIC">SS_SHOULD_BE_STATIC: Unread field: should this field be static?</a>
+</h2>
+
+  <p> This class contains an instance final field that
+   is initialized to a compile-time static value.
+   Consider making the field static.</p>
+
+    
+<h2>
+<a name="ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD">ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD: Write to static field from instance method</a>
+</h2>
+
+  <p> This instance method writes to a static field. This is tricky to get
+correct if multiple instances are being manipulated,
+and generally bad practice.
+</p>
+
+    
+<h2>
+<a name="UPM_UNCALLED_PRIVATE_METHOD">UPM_UNCALLED_PRIVATE_METHOD: Private method is never called</a>
+</h2>
+
+<p> This private method is never called. Although it is
+possible that the method will be invoked through reflection,
+it is more likely that the method is never used, and should be
+removed.
+</p>
+
+
+<h2>
+<a name="URF_UNREAD_FIELD">URF_UNREAD_FIELD: Unread field</a>
+</h2>
+
+  <p> This field is never read.&nbsp; Consider removing it from the class.</p>
+
+    
+<h2>
+<a name="UUF_UNUSED_FIELD">UUF_UNUSED_FIELD: Unused field</a>
+</h2>
+
+  <p> This field is never used.&nbsp; Consider removing it from the class.</p>
+
+    
+<h2>
+<a name="UW_UNCOND_WAIT">UW_UNCOND_WAIT: Unconditional wait</a>
+</h2>
+
+  <p> This method contains a call to <code>java.lang.Object.wait()</code> which
+  is not guarded by conditional control flow.&nbsp; The code should
+    verify that condition it intends to wait for is not already satisfied
+    before calling wait; any previous notifications will be ignored.
+  </p>
+
+    
+<h2>
+<a name="UWF_UNWRITTEN_FIELD">UWF_UNWRITTEN_FIELD: Unwritten field</a>
+</h2>
+
+  <p> This field is never written.&nbsp; All reads of it will return the default
+value. Check for errors (should it have been initialized?), or remove it if it is useless.</p>
+
+    </body>
+</html>
