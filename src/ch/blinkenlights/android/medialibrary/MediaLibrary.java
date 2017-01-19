@@ -80,7 +80,7 @@ public class MediaLibrary  {
 	 * Triggers a rescan of the library
 	 *  @param context the context to use
 	 * @param forceFull starts a full / slow scan if true
-     * @param drop drop the existing library if true
+	 * @param drop drop the existing library if true
      * @param ignoreSmallFiles ignore files less than a specific size.
      */
 	public static void startLibraryScan(Context context, boolean forceFull, boolean drop, boolean ignoreSmallFiles) {
